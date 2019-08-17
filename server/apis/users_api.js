@@ -1,7 +1,7 @@
-const User       = require('../models/User');
+const User = require('../models/User');
 const passport = require("passport");
 
-exports.signOutUser = function(req, res) {
+exports.signOutUser = function (req, res) {
   req.logout();
   res.send({ loggedIn: false })
 };
@@ -30,62 +30,64 @@ exports.loginUser = (req, res, next) => {
     if (err) {
       console.log(err);
       if (err.name === 'IncorrectCredentialsError') {
-          return res.status(400).json({
-              success: false,
-              message: err.message
-          });
+        return res.status(400).json({
+          success: false,
+          message: err.message
+        });
       }
 
       return res.status(400).json({
-          success: false,
-          message: 'Could not process the form.'
+        success: false,
+        message: 'Could not process the form.'
       });
-  }
+    }
 
-  console.log(userData, "this is the userData in users_api.js");
-  if (userData.message=="Invalid Password"||userData.message=="User not Found") {
+    console.log(userData, "this is the userData in users_api.js");
+    if (userData.message == "Invalid Password" || userData.message == "User not Found") {
       return res.json({
-          success: false,
-          message: userData.message,
-          user: userData
+        success: false,
+        message: userData.message,
+        user: userData
       })
-  }
-  else return res.json({
+    }
+    else return res.json({
       success: true,
       message: 'You have successfully logged in!',
       user: userData
-  });
+    });
   })(req, res, next);
 };
 
 // register a user
-exports.signUpUser = function(req,res) {
+exports.signUpUser = function (req, res) {
 
-  User.findOne({ 'username' :  req.body.username }, function(err, user) {
+  User.findOne({ 'username': req.body.username }, function (err, user) {
 
     // check to see if theres already a user with that email
     if (user) {
-        res.send({ duplicateUser: true })
+      res.send({ duplicateUser: true })
     } else {
 
-        // if there is no user with that email
-        // create the user
-        console.log("new user", req.body);
-        const newUser       = new User();
+      // if there is no user with that email
+      // create the user
+      console.log("new user", req.body);
+      const newUser = new User();
 
-        // set the user's local credentials
-        newUser.username    = req.body.username;
-        newUser.email       = req.body.email;
-        newUser.password    = newUser.generateHash(req.body.password);
+      // set the user's local credentials
+      // newUser.firstName = req.body.firstName;
+      // newUser.lastName = req.body.lastName;
+      newUser.username = req.body.username;
+      newUser.email = req.body.email;
+      newUser.password = newUser.generateHash(req.body.password);
 
-        // save the user
-        newUser.save()
-          .then(function() {
+      // save the user
+      newUser.save()
+        .then(function () {
           res.send({ success: true });
-        }).catch(function(err) {
+        }).catch(function (err) {
           res.json(err);
         });
     }
 
-  }); 
+  });
 };
