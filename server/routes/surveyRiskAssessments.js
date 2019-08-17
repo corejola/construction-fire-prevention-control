@@ -11,6 +11,6 @@ const authCheck = require("../config/middleware/authCheck");
 router.get('/', authCheck, assessment_api.postAssessment);
 
 // router.post('/new', authCheck, trips_api.createTrip);
-router.post('/new', authCheck, assessment_api.createSurveyRiskAssessment);
+router.post('/new', authCheck, assessment_api.postAssessment);
 
 module.exports = router;
