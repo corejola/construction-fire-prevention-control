@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // app/models/user.js
 // load the things we need
@@ -9,19 +9,25 @@ const Schema = mongoose.Schema;
 const surveyRiskAssessementSchema = new Schema({
 
     extinguishers: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     smokeFireDetection: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     smokeFireAlarms: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     fireRisers: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     emergencyEgress: {
-        type: Boolean
+        type: Boolean,
+        default: false
+
     },
     riskAssessmentResult: {
         type: String
@@ -29,7 +35,7 @@ const surveyRiskAssessementSchema = new Schema({
     assessmentDate: {
         type: Date,
     },
-    User: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: "User"
     }
