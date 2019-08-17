@@ -1,8 +1,8 @@
-var express = require('express');
-var router  = express.Router();
+const express = require('express');
+const router  = express.Router();
 
-var trips_api = require('../apis/trips_api');
-var authCheck = require("../config/middleware/authCheck");
+const trips_api = require('../apis/trips_api');
+const authCheck = require("../config/middleware/authCheck");
 
 router.get('/', authCheck, trips_api.index);
 
