@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
 
-    postAssessement: (req, res) => {
+    postAssessment: (req, res) => {
         db.SurveyRiskAssessment.create(req.body)
             .then((dbAssessment) => {
                 return db.Level
