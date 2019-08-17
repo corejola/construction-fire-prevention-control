@@ -5,7 +5,7 @@ const towerSchema = new Schema({
 
     towerNumber: String,
 
-    // this needs to be an array of objects so each level can have many assesments
+    // this needs to be an array of objects so each tower can have many levels
     levels: [{
         type: Schema.Types.ObjectId,
         ref: "Level"

@@ -6,7 +6,7 @@ const levelSchema = new Schema({
     levelNumber: String,
 
     // this needs to be an array of objects so each level can have many assesments
-    riskAssessment: [{
+    riskAssessments: [{
         type: Schema.Types.ObjectId,
         ref: "SurveyRiskAssessment"
     }]
