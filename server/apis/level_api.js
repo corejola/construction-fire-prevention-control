@@ -6,9 +6,9 @@ module.exports = {
 
         db.Tower.findOne({ _id: req.params.id })
             .populate("levels")
-            .then((dblevel) => {
+            .then((dbTower) => {
 
-                res.json(dblevel)
+                res.json(dbTower.levels)
 
             })
             .catch((err) => {
