@@ -43,6 +43,7 @@
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.2",
+    "foundation-sites": "^6.5.3",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.10.0",
     "morgan": "^1.8.1",
@@ -51,6 +52,8 @@
     "passport-local": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1"
+    "react-foundation": "^0.9.6",
+    "react-router-dom": "^4.1.1",
+    "save": "^2.4.0"
   }
 }

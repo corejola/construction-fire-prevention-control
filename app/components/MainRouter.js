@@ -9,6 +9,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
+import Assessment from "./Assessments"
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -48,17 +49,17 @@ export default class MainRouter extends Component {
   render() {
     return (
       <Router>
-      	<Switch>
-          <Route exact path="/" render={props => 
+        <Switch>
+          <Route exact path="/" render={props =>
             <Main
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
               authenticated={this.state.authenticated}
               logout={this.logout}
-            />} 
+            />}
           />
-          <Route exact path="/login" render={props => 
+          <Route exact path="/login" render={props =>
             <Login
               {...props}
               authenticate={this.authenticate}
@@ -67,25 +68,26 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          <Route exact path="/signup" render={props => 
+          <Route exact path="/signup" render={props =>
             <Signup
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
               authenticated={this.state.authenticated}
               logout={this.logout}
-            />} 
+            />}
           />
-          <Route path="/pricing" render={props => 
+          <Route path="/pricing" render={props =>
             <Pricing
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
               authenticated={this.state.authenticated}
               logout={this.logout}
-            />} 
+            />}
           />
-      	</Switch>
+          <Route path="/assessment" component={Assessment} />
+        </Switch>
       </Router>
     );
   }
