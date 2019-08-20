@@ -3,7 +3,7 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const passport = require("./config/passport");
 const session = require('express-session');
 const config = require("./config/extra-config");
@@ -29,8 +29,10 @@ app.use(function (req, res, next) {
 const authCheck = require('./config/middleware/attachAuthenticationStatus');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static('public'));
 
 app.use(session({ secret: config.sessionKey, resave: true, saveUninitialized: true }));
