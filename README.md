@@ -1,4 +1,4 @@
-![Lendlease](branding\Lendlease_Corporate_BrandName_RGB.png)
+![Lendlease](branding/Lendlease_Corporate_BrandName_RGB.png)
 
 # Construction Fire Prevention Control
 ## Problem:
