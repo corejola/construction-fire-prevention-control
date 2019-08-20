@@ -34,7 +34,7 @@ class List extends Component {
 
 
     // handleClick function that changes the state of the 
-    handleSwitch = event => {
+    handleSwitch(event) {
         console.log("switched")
         const { name, value } = event.target
 
@@ -48,14 +48,14 @@ class List extends Component {
 
     }
 
-    handleClick = event => {
+    handleClick(event) {
         console.log(`submit clicked`)
         // handle Risk Assessment score calculation
         alert("Survey Submitted")
     }
 
     render() {
-        const { alarm, detection, riser, egress } = this.state
+        const { alarm, extinguisher, detection, riser, egress } = this.state
 
         return (
             <div className="container">
@@ -73,7 +73,7 @@ class List extends Component {
                                     onChange={this.handleSwitch}
                                     input={{ name: extinguisher.name, value: extinguisher.installed }}
                                     active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} /> Fire Extiinguishers
+                                    inactive={{ text: 'No' }} /> Fire Extinguishers
                                 </div>
                             {/* <div>
                                 <Switch onChange={this.handleSwitch}
