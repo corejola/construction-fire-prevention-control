@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation';
+import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
 
 class List extends Component {
     constructor(props) {
@@ -36,12 +36,16 @@ class List extends Component {
     // handleClick function that changes the state of the 
     handleSwitch = event => {
         console.log("switched")
-        const { name } = event.target
+        const { name, value } = event.target
 
-        console.log(`Name: ${event.target.value}`)
-        if (name === "extinguisher") {
+        console.log(`Name: ${name}, Installed: ${value}`)
+        if (value === "false") {
+            this.setState({
+                installed: !this.state.installed
+            })
 
         }
+
     }
 
     handleClick = event => {
@@ -51,7 +55,7 @@ class List extends Component {
     }
 
     render() {
-        const { extinguisher, alarm, detection, riser, egress } = this.state
+        const { alarm, detection, riser, egress } = this.state
 
         return (
             <div className="container">
@@ -65,29 +69,41 @@ class List extends Component {
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
                             <div>
+                                <Switch
+                                    onChange={this.handleSwitch}
+                                    input={{ name: extinguisher.name, value: extinguisher.installed }}
+                                    active={{ text: 'Yes' }}
+                                    inactive={{ text: 'No' }} /> Fire Extiinguishers
+                                </div>
+                            {/* <div>
                                 <Switch onChange={this.handleSwitch}
                                     name={extinguisher.name}
                                     value={extinguisher.installed} />Fire Extinguishers
+                                </div> */}
+                            <div>
+                                <Switch
+                                    onChange={this.handleSwitch}
+                                    input={{ name: alarm.name, value: alarm.installed }}
+                                    active={{ text: 'Yes' }}
+                                    inactive={{ text: 'No' }} /> Fire/Smoke Alarms
                                 </div>
                             <div>
                                 <Switch onChange={this.handleSwitch}
-                                    name={alarm.name}
-                                    value={alarm.installed} /> Fire/Smoke Alarms
+                                    input={{ name: detection.name, value: detection.installed }}
+                                    active={{ text: 'Yes' }}
+                                    inactive={{ text: 'No' }} /> Fire/Smoke Detection
                                 </div>
                             <div>
                                 <Switch onChange={this.handleSwitch}
-                                    name={detection.name}
-                                    value={detection.installed} /> Fire/Smoke Detection
-                                </div>
-                            <div>
-                                <Switch onChange={this.handleSwitch}
-                                    name={riser.name}
-                                    value={riser.installed} /> Fire Risers
+                                    input={{ name: riser.name, value: riser.installed }}
+                                    active={{ text: 'Yes' }}
+                                    inactive={{ text: 'No' }} /> Fire Risers
                             </div>
                             <div>
                                 <Switch onChange={this.handleSwitch}
-                                    name={egress.name}
-                                    value={egress.installed} /> Path of Egress
+                                    input={{ name: egress.name, value: egress.installed }}
+                                    active={{ text: 'Yes' }}
+                                    inactive={{ text: 'No' }} /> Path of Egress
                                 </div>
                         </ButtonGroup>
                     </div>
