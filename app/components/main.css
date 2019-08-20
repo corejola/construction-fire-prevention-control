@@ -1,7 +1,7 @@
 .down-arrow {
-	width: 45px;
+  width: 45px;
   height: 45px;
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .intro {
@@ -10,7 +10,7 @@
   height: auto;
   padding: 2% 0;
   text-align: center;
-  color: white;
+  color: black;
   background: url(../img/home.jpeg) no-repeat center scroll;
   background-color: black;
   -webkit-background-size: cover;
@@ -24,12 +24,15 @@
   display: table-cell;
   vertical-align: middle;
 }
+
 .intro .intro-body .brand-heading {
   font-size: 40px;
 }
+
 .intro .intro-body .intro-text {
   font-size: 18px;
 }
+
 @media (min-width: 768px) {
   .intro {
     height: 100%;

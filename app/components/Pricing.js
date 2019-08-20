@@ -20,7 +20,7 @@ export default class Pricing extends Component {
                                 <div className="panel panel-danger panel-pricing">
                                     <div className="panel-heading">
                                         <i className="fa fa-desktop"></i>
-                                        <h3>Plan 1</h3>
+                                        <h3>Plan haha</h3>
                                     </div>
                                     <div className="panel-body text-center">
                                         <p><strong>$100 / Month</strong></p>
