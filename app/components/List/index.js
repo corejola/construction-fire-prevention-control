@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
 import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
+import Extinguisher from "./Inputs/Extinguisher"
 
 class List extends Component {
     constructor(props) {
@@ -32,9 +33,12 @@ class List extends Component {
         this.handleSwitch = this.handleSwitch.bind(this)
     }
 
+    scoreLogic() {
+        // code to assess the fire risk level based on the state of the level.
+    }
 
     // handleClick function that changes the state of the 
-    handleSwitch = event => {
+    handleSwitch(event) {
         console.log("switched")
         const { name, value } = event.target
 
@@ -48,7 +52,7 @@ class List extends Component {
 
     }
 
-    handleClick = event => {
+    handleClick(event) {
         console.log(`submit clicked`)
         // handle Risk Assessment score calculation
         alert("Survey Submitted")
@@ -68,13 +72,7 @@ class List extends Component {
 
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            <div>
-                                <Switch
-                                    onChange={this.handleSwitch}
-                                    input={{ name: extinguisher.name, value: extinguisher.installed }}
-                                    active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} /> Fire Extiinguishers
-                                </div>
+                            <Extinguisher />
                             {/* <div>
                                 <Switch onChange={this.handleSwitch}
                                     name={extinguisher.name}

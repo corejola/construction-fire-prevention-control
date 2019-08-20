@@ -4,12 +4,13 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import { link } from 'react-router-dom'
 import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessments/index"
+import Assessments from "./Assessments/index"
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ export default class MainRouter extends Component {
             />}
           />
           <Route path="/pricing" render={props =>
+
             <Pricing
               {...props}
               authenticate={this.authenticate}
@@ -86,9 +88,10 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          <Route exact path="/assessment" component={Assessment} />
+          <Route exact path="/assessment" render={<Assessments />} />
         </Switch>
       </Router>
+
     );
   }
 }
