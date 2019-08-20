@@ -9,7 +9,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessments"
+import Assessment from "./Assessments/index"
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -86,7 +86,7 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          <Route path="/assessment" component={Assessment} />
+          <Route exact path="/assessment" component={Assessment} />
         </Switch>
       </Router>
     );
