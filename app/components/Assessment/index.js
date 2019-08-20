@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import List from '../List';
-import TowerLevels from './TowerLevels.json'
+import TowerLevels from './TowerLevels.json';
 
 
 class Assessment extends Component {
@@ -8,7 +8,7 @@ class Assessment extends Component {
         super(props);
         this.state = {
             tower: "TOWER 1",
-            level: { TowerLevels }
+            levels: TowerLevels
         }
     };
 
@@ -19,8 +19,15 @@ class Assessment extends Component {
             <div className="container">
                 {/* .map over fake data */}
                 <h2>{this.state.tower} Risk Assessment</h2>
-                <hr />
-
+                {this.state.levels.map(item => {
+                    return (
+                        <List
+                            key={item.id}
+                            tower={item.tower}
+                            level={item.level}
+                        />)
+                })}
+                {/* Use list  */}
             </div>
         )
     };
