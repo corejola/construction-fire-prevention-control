@@ -4,13 +4,12 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import { link } from 'react-router-dom'
 import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessments from "./Assessments/index"
+import Assessment from "./Assessment"
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -49,49 +48,49 @@ export default class MainRouter extends Component {
 
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/" render={props =>
-            <Main
-              {...props}
-              authenticate={this.authenticate}
-              deAuthenticate={this.deAuthenticate}
-              authenticated={this.state.authenticated}
-              logout={this.logout}
-            />}
-          />
-          <Route exact path="/login" render={props =>
-            <Login
-              {...props}
-              authenticate={this.authenticate}
-              deAuthenticate={this.deAuthenticate}
-              authenticated={this.state.authenticated}
-              logout={this.logout}
-            />}
-          />
-          <Route exact path="/signup" render={props =>
-            <Signup
-              {...props}
-              authenticate={this.authenticate}
-              deAuthenticate={this.deAuthenticate}
-              authenticated={this.state.authenticated}
-              logout={this.logout}
-            />}
-          />
-          <Route path="/pricing" render={props =>
+      <Assessment />
+      // <Router>
+      //   <Switch>
+      //     <Route exact path="/" render={props =>
+      //       <Main
+      //         {...props}
+      //         authenticate={this.authenticate}
+      //         deAuthenticate={this.deAuthenticate}
+      //         authenticated={this.state.authenticated}
+      //         logout={this.logout}
+      //       />}
+      //     />
+      //     <Route exact path="/login" render={props =>
+      //       <Login
+      //         {...props}
+      //         authenticate={this.authenticate}
+      //         deAuthenticate={this.deAuthenticate}
+      //         authenticated={this.state.authenticated}
+      //         logout={this.logout}
+      //       />}
+      //     />
+      //     <Route exact path="/signup" render={props =>
+      //       <Signup
+      //         {...props}
+      //         authenticate={this.authenticate}
+      //         deAuthenticate={this.deAuthenticate}
+      //         authenticated={this.state.authenticated}
+      //         logout={this.logout}
+      //       />}
+      //     />
+      //     <Route path="/pricing" render={props =>
 
-            <Pricing
-              {...props}
-              authenticate={this.authenticate}
-              deAuthenticate={this.deAuthenticate}
-              authenticated={this.state.authenticated}
-              logout={this.logout}
-            />}
-          />
-          <Route exact path="/assessment" render={<Assessments />} />
-        </Switch>
-      </Router>
-
+      //       <Pricing
+      //         {...props}
+      //         authenticate={this.authenticate}
+      //         deAuthenticate={this.deAuthenticate}
+      //         authenticated={this.state.authenticated}
+      //         logout={this.logout}
+      //       />}
+      //     />
+      //     <Route exact path="/" component={Assessment} />
+      //   </Switch>
+      // </Router>
     );
   }
 }

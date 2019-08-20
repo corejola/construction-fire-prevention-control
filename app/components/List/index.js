@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
 import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
-import Extinguisher from "./Inputs/Extinguisher"
+// import Extinguisher from "./Inputs/Extinguisher"
 
 class List extends Component {
     constructor(props) {
@@ -59,7 +59,7 @@ class List extends Component {
     }
 
     render() {
-        const { alarm, detection, riser, egress } = this.state
+        const { extinguisher, alarm, detection, riser, egress } = this.state
 
         return (
             <div className="container">
@@ -72,12 +72,13 @@ class List extends Component {
 
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            <Extinguisher />
-                            {/* <div>
+                            {/* <Extinguisher /> */}
+                            <div>
                                 <Switch onChange={this.handleSwitch}
-                                    name={extinguisher.name}
-                                    value={extinguisher.installed} />Fire Extinguishers
-                                </div> */}
+                                    input={{ name: extinguisher.name, value: extinguisher.installed }}
+                                    active={{ text: 'Yes' }}
+                                    inactive={{ text: 'No' }} />Fire Extinguishers
+                                </div>
                             <div>
                                 <Switch
                                     onChange={this.handleSwitch}
