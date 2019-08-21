@@ -29,6 +29,7 @@ class List extends Component {
                     installed: false
                 }
             ],
+            riskScore: [],
             riskAssessment: ""
             // risk assessment can be a function of the sum of the values of each item in the state
         }
@@ -37,19 +38,23 @@ class List extends Component {
 
     scoreLogic() {
         // code to assess the fire risk level based on the state of the level.
+        // sum of risk score
+        // if risk score is <33 = Normal/Green
+        // if risk score is >34 && <67 = Caution/Yellow
+        // if risk score is > 68 = Critial/Red
 
     }
 
     // handleClick function that changes the state of the 
     handleSwitch(event) {
+        const { assessments } = this.state
         const { name, value } = event.target
+        console.log(`VALUE: ${value}`)
+        console.log(`Name: ${name}`)
+        let targetAssessment = assessments.filter(item => (item.name === event.target.name))
 
-        console.log(`Name: ${name}, Installed: ${value}`)
-        if (value === false) {
-            this.setState({
-                installed: !this.state.installed
-            })
-            console.log(`Switched Name: ${name}, Installed: ${value}`)
+        if (name === targetAssessment[0].name) {
+            console.log("HIT")
         }
 
     }
@@ -75,12 +80,15 @@ class List extends Component {
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
                             {assessments.map(item => {
                                 return (
-                                    <Switch onChange={this.handleSwitch}
-                                        key={item.name}
-                                        input={{ name: item.name, value: item.installed }}
-                                        active={{ text: 'Yes' }}
-                                        inactive={{ text: 'No' }}
-                                    />)
+                                    <div>
+                                        <Switch onChange={this.handleSwitch}
+                                            key={item.name}
+                                            input={{ name: item.name, value: item.installed }}
+                                            active={{ text: 'Yes' }}
+                                            inactive={{ text: 'No' }}
+                                        />
+                                        <p> {item.name}</p>
+                                    </div>)
                             })}
                         </ButtonGroup>
                     </div>
