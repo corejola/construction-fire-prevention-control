@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints, Grid, Cell } from 'react-foundation'
+import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation'
 
 
 class List extends Component {
@@ -86,22 +86,13 @@ class List extends Component {
                             {assessments.map(item => {
                                 return (
                                     <div className="grid-basics-example">
-                                        <Grid className="display">
-                                            <Cell large={4}>
-                                                <Switch onChange={this.handleSwitch}
-                                                    key={item.name}
-                                                    input={{ name: item.name, value: item.installed }}
-                                                    active={{ text: 'Yes' }}
-                                                    inactive={{ text: 'No' }}
-
-                                                />
-                                            </Cell>
-                                        </Grid>
-                                        <Grid className="display">
-                                            <Cell large={4}>
-                                                <p> {item.name}</p>
-                                            </Cell>
-                                        </Grid>
+                                        <Switch onChange={this.handleSwitch}
+                                            key={item.name}
+                                            input={{ name: item.name, value: item.installed }}
+                                            active={{ text: 'Yes' }}
+                                            inactive={{ text: 'No' }}
+                                        />
+                                        <p> {item.name}</p>
                                     </div>)
                             })}
                         </ButtonGroup>
