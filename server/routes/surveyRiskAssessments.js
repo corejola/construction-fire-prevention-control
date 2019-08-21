@@ -9,9 +9,10 @@ const authCheck = require("../config/middleware/authCheck");
 
 // router.get('/', authCheck, trips_api.index);
 router.get('/:id', authCheck, assessment_api.findAllAssessments);
+router.get('/', authCheck);
 
 // router.post('/new', authCheck, trips_api.createTrip);
 // router.post('/new', authCheck, assessment_api.postAssessment);
-router.post('/new', assessment_api.postAssessment);
+router.post('/new', authCheck, assessment_api.postAssessment);
 
 module.exports = router;
