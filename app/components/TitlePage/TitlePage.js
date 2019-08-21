@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Colors, ButtonGroup, Link} from 'react-foundation';
+import {Button, Colors, ButtonGroup, Link, Breakpoints} from 'react-foundation';
 // import './style.css';
 
 class TitlePage extends Component {
@@ -21,9 +21,14 @@ class TitlePage extends Component {
     render() {
 
         return (
+            // <div className="container">
+            // <div className="button-group-stack-example">
+            // <ButtonGroup stackFor={Breakpoints.SMALL}>
+
             <div className="container">
             <div className="button-group">  
-            <ButtonGroup isExpanded>
+            <ButtonGroup isExpanded> 
+            
             <Link 
             onClick={(e) => {e.preventDefault(); this.clickHandle();}} color={Colors.SUCCESS}><a className="userguide" href="/userguide">USERGUIDE</a>
             </Link>
@@ -45,9 +50,9 @@ class TitlePage extends Component {
             </Link>
 
             <Link
-            onClick={(e) => {e.preventDefault(); this.clickHandle();}} color={Colors.SUCCESS}><a className="assessments" href="/assessments">CURRENT FIRE RISK ASSESSMENT</a>
+            onClick={(e) => {e.preventDefault(); this.clickHandle();}} color={Colors.SUCCESS}><a className="assessments" href="/assessment">CURRENT FIRE RISK ASSESSMENT</a>
             </Link>
-
+          
             <Link
             onClick={(e) => {e.preventDefault(); this.clickHandle();}} color={Colors.SUCCESS}><a className="trending" href="#">FIRE RISK ASSESSMENT TRENDING</a>
             </Link>

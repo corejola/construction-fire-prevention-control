@@ -9,7 +9,9 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessments"
+// import Assessment from "./Assessments";
+import Assessment from "./Assessments/index";
+// import Guide from './Guide/Guide';
 import TitlePage from './TitlePage/TitlePage';
 
 export default class MainRouter extends Component {
@@ -80,6 +82,8 @@ export default class MainRouter extends Component {
           />
           <Route strict exact path="/titlepage" component={TitlePage}
           />
+          {/* <Route strict exact path="/guide" component={Guide}
+          /> */}
           <Route strict exact path="/pricing" render={props =>
             <Pricing
               {...props}
