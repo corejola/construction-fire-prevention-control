@@ -28,5 +28,5 @@ module.exports = function (app) {
 	app.use('/apis/levels', levels);
 	app.use('/apis/surveyRiskAssessments', surveyRiskAssessments);
 	app.use('/assessment', surveyRiskAssessments);
-	app.use('/', application);
+	// app.use('/', application);
 }

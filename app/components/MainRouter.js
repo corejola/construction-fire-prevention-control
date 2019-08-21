@@ -52,14 +52,23 @@ export default class MainRouter extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={props =>
+          {/* <Route exact path="/" render={props =>
             <Main
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
               authenticated={this.state.authenticated}
               logout={this.logout}
-            />}
+            />} */}
+          <PrivateRoute
+            exact
+            path="/"
+            component={Main}
+            authenticate={this.authenticate}
+            deAuthenticate={this.deAuthenticate}
+            authenticated={this.state.authenticated}
+            logout={this.logout}
+          />
           />
           <Route exact path="/login" render={props =>
             <Login
