@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
+import { Button, Switch, ButtonGroup, Breakpoints, Grid, Cell } from 'react-foundation'
 
 
 class List extends Component {
@@ -38,11 +38,12 @@ class List extends Component {
 
     scoreLogic() {
         // code to assess the fire risk level based on the state of the level.
-        // sum of risk score
+        // loop throught the this.state.assessment object (.map or forEach)
+        // .push into this.state.riskScore
+        // sum of riskScore
         // if risk score is <33 = Normal/Green
         // if risk score is >34 && <67 = Caution/Yellow
         // if risk score is > 68 = Critial/Red
-
     }
 
     // handleClick function that changes the state of the 
@@ -55,6 +56,10 @@ class List extends Component {
 
         if (name === targetAssessment[0].name) {
             console.log("HIT")
+            this.setState({
+                installed: !targetAssessment[0].installed
+            })
+            console.log(this.state.assessments)
         }
 
     }
@@ -80,14 +85,23 @@ class List extends Component {
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
                             {assessments.map(item => {
                                 return (
-                                    <div>
-                                        <Switch onChange={this.handleSwitch}
-                                            key={item.name}
-                                            input={{ name: item.name, value: item.installed }}
-                                            active={{ text: 'Yes' }}
-                                            inactive={{ text: 'No' }}
-                                        />
-                                        <p> {item.name}</p>
+                                    <div className="grid-basics-example">
+                                        <Grid className="display">
+                                            <Cell large={4}>
+                                                <Switch onChange={this.handleSwitch}
+                                                    key={item.name}
+                                                    input={{ name: item.name, value: item.installed }}
+                                                    active={{ text: 'Yes' }}
+                                                    inactive={{ text: 'No' }}
+
+                                                />
+                                            </Cell>
+                                        </Grid>
+                                        <Grid className="display">
+                                            <Cell large={4}>
+                                                <p> {item.name}</p>
+                                            </Cell>
+                                        </Grid>
                                     </div>)
                             })}
                         </ButtonGroup>
