@@ -15,11 +15,13 @@ class Assessment extends Component {
     // handleClick function that changes the state of the 
 
     render() {
+        const { tower, levels } = this.state
         return (
             <div className="container">
                 {/* .map over fake data */}
-                <h2>{this.state.tower} Risk Assessment</h2>
-                {this.state.levels.map(item => {
+                {/* Use list  */}
+                <h2>{tower} Risk Assessment</h2>
+                {levels.map(item => {
                     return (
                         <List
                             key={item.id}
@@ -27,7 +29,6 @@ class Assessment extends Component {
                             level={item.level}
                         />)
                 })}
-                {/* Use list  */}
             </div>
         )
     };

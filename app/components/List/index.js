@@ -1,32 +1,34 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
-// import Extinguisher from "./Inputs/Extinguisher"
+import { Button, ButtonGroup, Breakpoints } from 'react-foundation'
+import Input from "./Input"
 
 class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            extinguisher: {
-                name: "extinguisher",
-                installed: false
-            },
-            alarm: {
-                name: "alarms",
-                installed: false
-            },
-            detection: {
-                name: "detection",
-                installed: false
-            },
-            riser: {
-                name: "riser",
-                installed: false
-            },
-            egress: {
-                name: "egress",
-                installed: false
-            },
+            assessments: [
+                {
+                    name: "extinguisher",
+                    installed: false
+                },
+                {
+                    name: "alarms",
+                    installed: false
+                },
+                {
+                    name: "detection",
+                    installed: false
+                },
+                {
+                    name: "riser",
+                    installed: false
+                },
+                {
+                    name: "egress",
+                    installed: false
+                }
+            ],
             riskAssessment: ""
             // risk assessment can be a function of the sum of the values of each item in the state
         }
@@ -52,15 +54,14 @@ class List extends Component {
 
     }
 
-    handleClick(event) {
+    handleClick() {
         console.log(`submit clicked`)
         // handle Risk Assessment score calculation
         alert("Survey Submitted")
     }
 
     render() {
-        const { extinguisher, alarm, detection, riser, egress } = this.state
-
+        const { assessments } = this.state
         return (
             <div className="container">
                 {/* use a button to that changes color upon onclick */}
@@ -72,8 +73,12 @@ class List extends Component {
 
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            {/* <Extinguisher /> */}
-                            <div>
+                            {assessments.map(item => {
+                                return (
+                                    <Input key={item.name} installed={item.installed} />
+                                )
+                            })}
+                            {/* <div>
                                 <Switch onChange={this.handleSwitch}
                                     input={{ name: extinguisher.name, value: extinguisher.installed }}
                                     active={{ text: 'Yes' }}
@@ -103,7 +108,7 @@ class List extends Component {
                                     input={{ name: egress.name, value: egress.installed }}
                                     active={{ text: 'Yes' }}
                                     inactive={{ text: 'No' }} /> Path of Egress
-                                </div>
+                                </div> */}
                         </ButtonGroup>
                     </div>
 
