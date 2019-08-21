@@ -48,49 +48,48 @@ export default class MainRouter extends Component {
 
   render() {
     return (
-      <Assessment />
-      // <Router>
-      //   <Switch>
-      //     <Route exact path="/" render={props =>
-      //       <Main
-      //         {...props}
-      //         authenticate={this.authenticate}
-      //         deAuthenticate={this.deAuthenticate}
-      //         authenticated={this.state.authenticated}
-      //         logout={this.logout}
-      //       />}
-      //     />
-      //     <Route exact path="/login" render={props =>
-      //       <Login
-      //         {...props}
-      //         authenticate={this.authenticate}
-      //         deAuthenticate={this.deAuthenticate}
-      //         authenticated={this.state.authenticated}
-      //         logout={this.logout}
-      //       />}
-      //     />
-      //     <Route exact path="/signup" render={props =>
-      //       <Signup
-      //         {...props}
-      //         authenticate={this.authenticate}
-      //         deAuthenticate={this.deAuthenticate}
-      //         authenticated={this.state.authenticated}
-      //         logout={this.logout}
-      //       />}
-      //     />
-      //     <Route path="/pricing" render={props =>
+      <Router>
+        <Switch>
+          <Route exact path="/" render={props =>
+            <Main
+              {...props}
+              authenticate={this.authenticate}
+              deAuthenticate={this.deAuthenticate}
+              authenticated={this.state.authenticated}
+              logout={this.logout}
+            />}
+          />
+          <Route exact path="/login" render={props =>
+            <Login
+              {...props}
+              authenticate={this.authenticate}
+              deAuthenticate={this.deAuthenticate}
+              authenticated={this.state.authenticated}
+              logout={this.logout}
+            />}
+          />
+          <Route exact path="/signup" render={props =>
+            <Signup
+              {...props}
+              authenticate={this.authenticate}
+              deAuthenticate={this.deAuthenticate}
+              authenticated={this.state.authenticated}
+              logout={this.logout}
+            />}
+          />
+          <Route path="/pricing" render={props =>
 
-      //       <Pricing
-      //         {...props}
-      //         authenticate={this.authenticate}
-      //         deAuthenticate={this.deAuthenticate}
-      //         authenticated={this.state.authenticated}
-      //         logout={this.logout}
-      //       />}
-      //     />
-      //     <Route exact path="/" component={Assessment} />
-      //   </Switch>
-      // </Router>
+            <Pricing
+              {...props}
+              authenticate={this.authenticate}
+              deAuthenticate={this.deAuthenticate}
+              authenticated={this.state.authenticated}
+              logout={this.logout}
+            />}
+          />
+          <Route exact path="/assessment" component={Assessment} />
+        </Switch>
+      </Router>
     );
   }
 }

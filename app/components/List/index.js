@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, ButtonGroup, Breakpoints } from 'react-foundation'
-import Input from "./Input"
+import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
+
 
 class List extends Component {
     constructor(props) {
@@ -37,19 +37,19 @@ class List extends Component {
 
     scoreLogic() {
         // code to assess the fire risk level based on the state of the level.
+
     }
 
     // handleClick function that changes the state of the 
     handleSwitch(event) {
-        console.log("switched")
         const { name, value } = event.target
 
         console.log(`Name: ${name}, Installed: ${value}`)
-        if (value === "false") {
+        if (value === false) {
             this.setState({
                 installed: !this.state.installed
             })
-
+            console.log(`Switched Name: ${name}, Installed: ${value}`)
         }
 
     }
@@ -75,40 +75,13 @@ class List extends Component {
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
                             {assessments.map(item => {
                                 return (
-                                    <Input key={item.name} installed={item.installed} />
-                                )
+                                    <Switch onChange={this.handleSwitch}
+                                        key={item.name}
+                                        input={{ name: item.name, value: item.installed }}
+                                        active={{ text: 'Yes' }}
+                                        inactive={{ text: 'No' }}
+                                    />)
                             })}
-                            {/* <div>
-                                <Switch onChange={this.handleSwitch}
-                                    input={{ name: extinguisher.name, value: extinguisher.installed }}
-                                    active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} />Fire Extinguishers
-                                </div>
-                            <div>
-                                <Switch
-                                    onChange={this.handleSwitch}
-                                    input={{ name: alarm.name, value: alarm.installed }}
-                                    active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} /> Fire/Smoke Alarms
-                                </div>
-                            <div>
-                                <Switch onChange={this.handleSwitch}
-                                    input={{ name: detection.name, value: detection.installed }}
-                                    active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} /> Fire/Smoke Detection
-                                </div>
-                            <div>
-                                <Switch onChange={this.handleSwitch}
-                                    input={{ name: riser.name, value: riser.installed }}
-                                    active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} /> Fire Risers
-                            </div>
-                            <div>
-                                <Switch onChange={this.handleSwitch}
-                                    input={{ name: egress.name, value: egress.installed }}
-                                    active={{ text: 'Yes' }}
-                                    inactive={{ text: 'No' }} /> Path of Egress
-                                </div> */}
                         </ButtonGroup>
                     </div>
 
