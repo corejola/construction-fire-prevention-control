@@ -1,5 +1,7 @@
 const User = require('../models/User');
 const passport = require("passport");
+const jwt = require('jsonwebtoken');
+const jwtSecret = require('../config/extra-config');
 
 exports.signOutUser = function (req, res) {
   req.logout();
@@ -50,11 +52,38 @@ exports.loginUser = (req, res, next) => {
         user: userData
       })
     }
-    else return res.json({
-      success: true,
-      message: 'You have successfully logged in!',
-      user: userData
-    });
+    // else {
+    // return res.json({
+    //   success: true,
+    //   message: 'You have successfully logged in!',
+    //   user: userData
+    // });
+    // }
+    //   const token = jwt.sign({ id: userData.username }, jwtSecret.secret);
+    //   res.status(200).send({
+    //     success: true,
+    //     token: token,
+    //     message: 'You have successfully logged in!',
+    //     user: userData
+    //   });
+    // })(req, res, next)
+    else {
+      req.logIn(userData, err => {
+        User.findOne({
+
+          username: userData.username,
+
+        }).then(user => {
+          const token = jwt.sign({ id: user.username }, jwtSecret.secret);
+          res.status(200).send({
+            success: true,
+            token: token,
+            message: 'You have successfully logged in!',
+            user: userData
+          });
+        });
+      });
+    }
   })(req, res, next);
 };
 

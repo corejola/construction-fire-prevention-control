@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch, Redirect
 } from 'react-router-dom'
 import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-// import Assessment from "./Assessments";
-import Assessment from "./Assessments/index";
-// import Guide from './Guide/Guide';
+import Assessment from "./Assessment";
 import TitlePage from './TitlePage/TitlePage';
+import PrivateRoute from "./utils/PrivateRoute";
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -43,6 +42,7 @@ export default class MainRouter extends Component {
     axios.get('/apis/users/logout')
       .then(function (data) {
         this.deAuthenticate();
+        localStorage.removeItem("authenticated");
         window.location.reload();
       }.bind(this)).catch(function (err) {
         console.log(err);
@@ -53,14 +53,23 @@ export default class MainRouter extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={props =>
+          {/* <Route exact path="/" render={props =>
             <Main
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
               authenticated={this.state.authenticated}
               logout={this.logout}
-            />}
+            />} */}
+          <PrivateRoute
+            exact
+            path="/"
+            component={Main}
+            authenticate={this.authenticate}
+            deAuthenticate={this.deAuthenticate}
+            authenticated={this.state.authenticated}
+            logout={this.logout}
+          />
           />
           <Route strict exact path="/login" render={props =>
             <Login

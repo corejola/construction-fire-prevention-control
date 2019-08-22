@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-var passport = require('../config/passport.js')
+const passport = require('../config/passport.js');
 
 const users_api = require('../apis/users_api');
 
