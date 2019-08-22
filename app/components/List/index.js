@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
+import { Button, Switch, ButtonGroup, Breakpoints, Callout } from 'react-foundation'
 
 const assessments = [
     { extinguisher: false },
@@ -42,21 +42,12 @@ class List extends Component {
         const { extinguisher, alarms, detection, riser, egress } = this.state
         console.log(this.state)
         let score = []
-        if (extinguisher === true) {
-            return score.push(10)
-        }
-        if (alarms === true) {
-            return score.push(20)
-        }
-        if (detection === true) {
-            return score.push(20)
-        }
-        if (riser === true) {
-            return score.push(40)
-        }
-        if (egress === true) {
-            return score.push(50)
-        }
+        extinguisher ? score.push(10) : null;
+        alarms ? score.push(20) : null;
+        detection ? score.push(20) : null;
+        riser ? score.push(40) : null;
+        egress ? score.push(50) : null;
+
         this.setState({
             riskScore: score.reduce((a, b) => a + b)
         })
@@ -87,16 +78,41 @@ class List extends Component {
     }
 
     handleClick() {
-        console.log(`submit clicked`)
+        const { riskScore } = this.state
+        //  Conditional rendering
+        // if risk score is <33 = Normal/Green
+        // if risk score is >34 && <67 = Caution/Yellow
+        // if risk score is > 68 = Critial/Red
         // handle Risk Assessment score calculation
         this.scoreLogic()
-        console.log(this.state.riskScore)
+        console.log(riskScore)
+        if (riskScore < 33) {
+            // Render a Green/Normal
+            {
+                <div className="callout-basics-example">
+                    <Callout>
+                        <h5> Normal.</h5>
+                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                        <a>It's dangerous to go alone, take this.</a>
+                    </Callout>
+                </div>
+            }
+        }
+        if (riskScore > 34 && riskScore < 66) {
+            // Render a Yellow/Caution
+        }
+        if (riskScore > 67) {
+            // Render a Red/Critial
+        }
+
         alert("Survey Submitted")
     }
 
-    render() {
-        // const { assessments } = this.state
+    renderPage() {
 
+    }
+
+    render() {
         return (
             <div className="container">
                 {/* use a button to that changes color upon onclick */}
@@ -105,7 +121,6 @@ class List extends Component {
                     <h3>LEVEL {this.props.level}</h3>
                     {/* Use horizontal list buttons  */}
                     {/* conditional rendering for buttons */}
-
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
                             {assessments.map((item) => {
