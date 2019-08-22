@@ -12,8 +12,6 @@ class Assessment extends Component {
         }
     };
 
-    // handleClick function that changes the state of the 
-
     render() {
         const { tower, levels } = this.state
         return (

@@ -28,9 +28,9 @@ export default class Nav extends Component {
                 <a className="page-scroll nav-left-text" href="/pricing"><p>PRICING</p></a>
               </li>
               <li>
-                <a className="page-scroll nav-left-text" href="/trips"><p>TRIPS</p></a>
+                <a className="page-scroll nav-left-text" href="/assessment"><p>ASSESSMENTS</p></a>
               </li>
-              {this.props.authenticated ? (
+              {localStorage.getItem('authenticated') ? (
                 <li>
                   <a href="#" onClick={this.props.logout} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGOUT</p></div></a>
                 </li>
