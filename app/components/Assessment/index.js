@@ -25,6 +25,7 @@ class Assessment extends Component {
                             key={item.id}
                             tower={item.tower}
                             level={item.level}
+                            levelId={item.id}
                         />)
                 })}
             </div>

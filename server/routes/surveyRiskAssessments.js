@@ -12,6 +12,6 @@ router.get('/:id', authCheck, assessment_api.findAllAssessments);
 router.get('/', authCheck);
 
 // router.post('/new', authCheck, trips_api.createTrip);
-router.post('/new', authCheck, assessment_api.postAssessment);
+router.post('/new/:id', authCheck, assessment_api.postAssessment);
 
 module.exports = router;

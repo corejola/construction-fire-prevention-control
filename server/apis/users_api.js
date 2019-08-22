@@ -8,6 +8,16 @@ exports.signOutUser = function (req, res) {
   res.send({ loggedIn: false })
 };
 
+exports.getUser = (req, res, next) => {
+  User.findOne({
+
+    username: req.user.username,
+
+  })
+    .then(user => res.json(user))
+
+};
+
 // login
 exports.loginUser = (req, res, next) => {
 
@@ -59,13 +69,6 @@ exports.loginUser = (req, res, next) => {
     //   user: userData
     // });
     // }
-    //   const token = jwt.sign({ id: userData.username }, jwtSecret.secret);
-    //   res.status(200).send({
-    //     success: true,
-    //     token: token,
-    //     message: 'You have successfully logged in!',
-    //     user: userData
-    //   });
     // })(req, res, next)
     else {
       req.logIn(userData, err => {
