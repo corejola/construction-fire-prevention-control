@@ -9,7 +9,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessment";
+import Assessment from "./Assessment/index";
 import TitlePage from './TitlePage/TitlePage';
 import PrivateRoute from "./utils/PrivateRoute";
 
