@@ -9,7 +9,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessments";
+import Assessment from "./Assessment";
 import PrivateRoute from "./utils/PrivateRoute";
 
 export default class MainRouter extends Component {
@@ -89,6 +89,7 @@ export default class MainRouter extends Component {
             />}
           />
           <Route path="/pricing" render={props =>
+
             <Pricing
               {...props}
               authenticate={this.authenticate}
