@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Nav from './children/Nav'
+import Nav from './children/Nav';
 
 require('./login.css');
 
@@ -40,6 +40,7 @@ export default class Login extends Component {
         console.log(data.data);
         if (data.data.success) {
           this.props.authenticate();
+          localStorage.setItem("authenticated", this.props.authenticated)
           this.setState({
             redirectToReferrer: true
           });
@@ -85,14 +86,16 @@ export default class Login extends Component {
 
     return (
       <div>
-        <Nav
+        {/* <Nav
           authenticated={this.props.authenticated}
           authenticate={this.props.authenticate}
           deAuthenticate={this.props.deAuthenticate}
           logout={this.props.logout}
-        />
+        /> */}
+        <img className="loginLogo" src={require("../../branding/Lendlease_Corporate_Logo_RGB.png")} />
         <div className="loginmodal-container">
-          <h1 className="">Log In to Your Account</h1><br />
+          <h1 className="">Construction Fire: <br />Prevention & Control</h1><br />
+          <h2 className="">Log In to Your Account</h2><br />
           <form className="login" onSubmit={this.handleSubmit.bind(this)}>
             <input id="username-input" ref="user" type="text" name="user" placeholder="Username" onChange={this.handleUsernameChange} value={this.state.username} />
             <input id="password-input" ref="password" type="password" name="pass" placeholder="Password" onChange={this.handlePasswordChange} value={this.state.password} />

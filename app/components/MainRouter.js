@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch, Redirect
 } from 'react-router-dom'
 import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessments"
+import Assessment from "./Assessments";
+import PrivateRoute from "./utils/PrivateRoute";
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ export default class MainRouter extends Component {
     axios.get('/apis/users/logout')
       .then(function (data) {
         this.deAuthenticate();
+        localStorage.removeItem("authenticated");
         window.location.reload();
       }.bind(this)).catch(function (err) {
         console.log(err);
@@ -50,14 +52,23 @@ export default class MainRouter extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={props =>
+          {/* <Route exact path="/" render={props =>
             <Main
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
               authenticated={this.state.authenticated}
               logout={this.logout}
-            />}
+            />} */}
+          <PrivateRoute
+            exact
+            path="/"
+            component={Main}
+            authenticate={this.authenticate}
+            deAuthenticate={this.deAuthenticate}
+            authenticated={this.state.authenticated}
+            logout={this.logout}
+          />
           />
           <Route exact path="/login" render={props =>
             <Login
@@ -86,7 +97,18 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
+          {/* <Route exact path="/assessment" render={props =>
+            this.state.authenticated ?
+              (<Assessment
+              />) :
+              <Redirect
+                to={{
+                  pathname: '/login',
+                  state: { from: props.location }
+                }} /> */}
+          {/* <PrivateRoute exact path="/assessment" component={Assessment} /> */}
           <Route exact path="/assessment" component={Assessment} />
+          } />
         </Switch>
       </Router>
     );
