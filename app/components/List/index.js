@@ -7,26 +7,22 @@ class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // reduce to one prop value pair
             assessments: [
                 {
-                    name: "extinguisher",
-                    installed: false
+                    extinguisher: false
                 },
                 {
-                    name: "alarms",
-                    installed: false
+                    alarms: false
                 },
                 {
-                    name: "detection",
-                    installed: false
+                    detection: false
                 },
                 {
-                    name: "riser",
-                    installed: false
+                    riser: false
                 },
                 {
-                    name: "egress",
-                    installed: false
+                    egress: false
                 }
             ],
             riskScore: [],
@@ -52,9 +48,10 @@ class List extends Component {
         const { name, value } = event.target
         console.log(`VALUE: ${value}`)
         console.log(`Name: ${name}`)
-        let targetAssessment = assessments.filter(item => (item.name === event.target.name))
 
-        if (name === targetAssessment[0].name) {
+        let targetAssessment = assessments.filter(item => (Object.keys(item) === name))
+        console.log(targetAssessment)
+        if (name === targetAssessment) {
             console.log("HIT")
             this.setState({
                 installed: !targetAssessment[0].installed
@@ -84,15 +81,18 @@ class List extends Component {
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
                             {assessments.map(item => {
+                                let propName = Object.keys(item)
                                 return (
                                     <div className="grid-basics-example">
                                         <Switch onChange={this.handleSwitch}
-                                            key={item.name}
-                                            input={{ name: item.name, value: item.installed }}
+                                            key={item}
+                                            input={{ name: propName, value: item }}
                                             active={{ text: 'Yes' }}
                                             inactive={{ text: 'No' }}
                                         />
-                                        <p> {item.name}</p>
+                                        {/* user property name */}
+                                        <p> {propName}</p>
+
                                     </div>)
                             })}
                         </ButtonGroup>
