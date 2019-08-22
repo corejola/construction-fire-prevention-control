@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation'
+import { Button, Switch, ButtonGroup, Breakpoints } from 'react-foundation'
 
 const assessments = [
     { extinguisher: false },
@@ -22,8 +22,9 @@ class List extends Component {
             riskScore: 0,
             riskAssessment: ""
             // risk assessment can be a function of the sum of the values of each item in the state
-        }
-        this.handleSwitch = this.handleSwitch.bind(this)
+        };
+        this.handleSwitch = this.handleSwitch.bind(this);
+        this.scoreLogic = this.scoreLogic.bind(this);
     }
 
     componentDidUpdate() {
@@ -39,14 +40,26 @@ class List extends Component {
         // if risk score is >34 && <67 = Caution/Yellow
         // if risk score is > 68 = Critial/Red
         const { extinguisher, alarms, detection, riser, egress } = this.state
+        console.log(this.state)
         let score = []
-        if (extinguisher === true) { }
-        if (alarms === true) { }
-        if (detection === true) { }
-        if (riser === true) { }
-        if (egress === true) {
-
+        if (extinguisher === true) {
+            return score.push(10)
         }
+        if (alarms === true) {
+            return score.push(20)
+        }
+        if (detection === true) {
+            return score.push(20)
+        }
+        if (riser === true) {
+            return score.push(40)
+        }
+        if (egress === true) {
+            return score.push(50)
+        }
+        this.setState({
+            riskScore: score.reduce((a, b) => a + b)
+        })
     }
 
     // handleClick function that changes the state of the 
@@ -76,6 +89,8 @@ class List extends Component {
     handleClick() {
         console.log(`submit clicked`)
         // handle Risk Assessment score calculation
+        this.scoreLogic()
+        console.log(this.state.riskScore)
         alert("Survey Submitted")
     }
 
