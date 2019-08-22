@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './TitlePage.css'
 
-
-
-// import './style.css';
-
-function TitlePage(props) {
+const TitlePage = props => {
     return (
         <div className="container">
             <div className="d-flex flex-lg-row justify-content-center">
@@ -20,7 +16,7 @@ function TitlePage(props) {
 
             <div className="d-flex flex-lg-row justify-content-center">
                 <div className="p-2">
-                    <Link to="#" className="submit">USER GUIDE</Link>
+                    <Link to="/userguide" className="submit">USER GUIDE</Link>
                 </div>
             </div>
             <div className="d-flex flex-lg-row justify-content-center">

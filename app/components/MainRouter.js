@@ -11,6 +11,7 @@ import Pricing from "./Pricing";
 import axios from 'axios';
 import Assessment from "./Assessment/index";
 import TitlePage from './TitlePage/TitlePage';
+import UserGuide from './UserGuide/UserGuide';
 import PrivateRoute from "./utils/PrivateRoute";
 
 export default class MainRouter extends Component {
@@ -91,8 +92,8 @@ export default class MainRouter extends Component {
           />
           <Route strict exact path="/titlepage" component={TitlePage}
           />
-          {/* <Route strict exact path="/guide" component={Guide}
-          /> */}
+          <Route strict exact path="/userguide" component={UserGuide}
+          />
           <Route strict exact path="/pricing" render={props =>
             <Pricing
               {...props}
