@@ -2,34 +2,32 @@ import React, { Component } from 'react'
 // CSS for horizontal list
 import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation'
 
+const assessments = [
+    { extinguisher: false },
+    { alarms: false },
+    { detection: false },
+    { riser: false },
+    { egress: false }
+]
 
 class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // reduce to one prop value pair
-            assessments: [
-                {
-                    extinguisher: false
-                },
-                {
-                    alarms: false
-                },
-                {
-                    detection: false
-                },
-                {
-                    riser: false
-                },
-                {
-                    egress: false
-                }
-            ],
-            riskScore: [],
+            extinguisher: false,
+            alarms: false,
+            detection: false,
+            riser: false,
+            egress: false,
+            riskScore: 0,
             riskAssessment: ""
             // risk assessment can be a function of the sum of the values of each item in the state
         }
         this.handleSwitch = this.handleSwitch.bind(this)
+    }
+
+    componentDidUpdate() {
+        console.log(this.state)
     }
 
     scoreLogic() {
@@ -40,25 +38,39 @@ class List extends Component {
         // if risk score is <33 = Normal/Green
         // if risk score is >34 && <67 = Caution/Yellow
         // if risk score is > 68 = Critial/Red
+        const { extinguisher, alarms, detection, riser, egress } = this.state
+        let score = []
+        if (extinguisher === true) { }
+        if (alarms === true) { }
+        if (detection === true) { }
+        if (riser === true) { }
+        if (egress === true) {
+
+        }
     }
 
     // handleClick function that changes the state of the 
-    handleSwitch(event) {
-        const { assessments } = this.state
-        const { name, value } = event.target
-        console.log(`VALUE: ${value}`)
+    handleSwitch() {
+        const { name } = event.target
         console.log(`Name: ${name}`)
 
-        let targetAssessment = assessments.filter(item => (Object.keys(item) === name))
-        console.log(targetAssessment)
-        if (name === targetAssessment) {
-            console.log("HIT")
-            this.setState({
-                installed: !targetAssessment[0].installed
-            })
-            console.log(this.state.assessments)
+        switch (name) {
+            case 'extinguisher':
+                this.setState({ extinguisher: !this.state.extinguisher })
+                break;
+            case 'alarms':
+                this.setState({ alarms: !this.state.alarms })
+                break;
+            case 'detection':
+                this.setState({ detection: !this.state.detection })
+                break;
+            case 'riser':
+                this.setState({ riser: !this.state.riser })
+                break;
+            case 'egress':
+                this.setState({ egress: !this.state.egress })
+                break;
         }
-
     }
 
     handleClick() {
@@ -68,7 +80,8 @@ class List extends Component {
     }
 
     render() {
-        const { assessments } = this.state
+        // const { assessments } = this.state
+
         return (
             <div className="container">
                 {/* use a button to that changes color upon onclick */}
@@ -80,19 +93,19 @@ class List extends Component {
 
                     <div className="switch-basics-example button-group-stack-example">
                         <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            {assessments.map(item => {
+                            {assessments.map((item) => {
                                 let propName = Object.keys(item)
+                                let propVal = Object.values(item)
                                 return (
                                     <div className="grid-basics-example">
                                         <Switch onChange={this.handleSwitch}
-                                            key={item}
-                                            input={{ name: propName, value: item }}
+                                            key={propName}
+                                            input={{ name: propName, value: propVal }}
                                             active={{ text: 'Yes' }}
                                             inactive={{ text: 'No' }}
                                         />
                                         {/* user property name */}
                                         <p> {propName}</p>
-
                                     </div>)
                             })}
                         </ButtonGroup>
