@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from '../List';
 import TowerLevels from './TowerLevels.json';
+import axios from 'axios';
 
 
 class Assessment extends Component {

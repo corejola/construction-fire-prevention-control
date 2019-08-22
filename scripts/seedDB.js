@@ -61,14 +61,68 @@ db.User.find({}).then((users) => {
 
                 const levelSeed = [
                     {
-                        levelNumber: "1",
-                        riskAssessments: [surveys[0]._id, surveys[1]._id]
+                        levelNumber: "B2",
+                        riskAssessments: []
                     },
                     {
-                        levelNumber: "2",
+                        levelNumber: "B1",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "Ground",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "22/Mechanical",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "PH1",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "PH2",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "PH3",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "PH4",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "ROOF",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "MECH. ELEV. MACH.",
+                        riskAssessments: []
+                    },
+                    {
+                        levelNumber: "MECH. ROOF",
                         riskAssessments: []
                     }
                 ];
+
+                for (let i = 21; i > 1; i--) {
+
+                    levelSeed.splice(3, 0, {
+                        levelNumber: "" + i + "",
+                        riskAssessments: []
+                    })
+
+                };
+
+                for (let i = 50; i > 22; i--) {
+
+                    levelSeed.splice(24, 0, {
+                        levelNumber: "" + i + "",
+                        riskAssessments: []
+                    })
+
+                };
 
                 db.Level
                     .remove({})
@@ -80,9 +134,13 @@ db.User.find({}).then((users) => {
                             const towerSeed = [
                                 {
                                     towerNumber: "1",
-                                    levels: [levels[0]._id, levels[1]._id]
+                                    levels: []
                                 }
                             ];
+
+                            for (let i = 0; i < levels.length; i++) {
+                                towerSeed[0].levels.push(levels[i]._id)
+                            };
 
                             db.Tower
                                 .remove({})
@@ -98,8 +156,6 @@ db.User.find({}).then((users) => {
 
                         });
 
-                        // console.log(data.result.n + " records inserted!");
-                        // process.exit(0);
                     })
                     .catch(err => {
                         console.error(err);
@@ -108,8 +164,6 @@ db.User.find({}).then((users) => {
 
             });
 
-            // console.log(data.result.n + " records inserted!");
-            // process.exit(0);
         })
         .catch(err => {
             console.error(err);
@@ -117,14 +171,6 @@ db.User.find({}).then((users) => {
         });
 
 });
-
-        // console.log(data.result.n + " records inserted!");
-        // process.exit(0);
-    // })
-    // .catch(err => {
-    //     console.error(err);
-    //     process.exit(1);
-    // });
 
 
 
