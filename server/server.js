@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 });
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + '/public/favicon.ico'));
 const authCheck = require('./config/middleware/attachAuthenticationStatus');
 
 app.use(logger('dev'));
