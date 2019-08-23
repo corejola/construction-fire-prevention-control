@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation'
-
+import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation';
 import API from "../utils/API";
+import Status from "../Status";
 
 const assessments = [
     { extinguisher: false },
@@ -26,7 +26,7 @@ class List extends Component {
             // risk assessment can be a function of the sum of the values of each item in the state
         }
         this.handleSwitch = this.handleSwitch.bind(this)
-        this.handleClick = this.handleClick.bind(this)
+        this.submitAssessment = this.submitAssessment.bind(this)
     }
 
     componentDidUpdate() {
@@ -52,7 +52,7 @@ class List extends Component {
         }
     };
 
-    // handleClick function that changes the state of the 
+    // submitAssessment function that changes the state of the 
     handleSwitch() {
         const { name } = event.target
         console.log(`Name: ${name}`)
@@ -76,7 +76,7 @@ class List extends Component {
         }
     };
 
-    handleClick() {
+    submitAssessment() {
 
         API.getUser()
 
@@ -98,58 +98,70 @@ class List extends Component {
                         user: res.data._id
 
                     })
-                    .then(res => console.log(res))
-
+                    .then(res => {
+                        console.log(res)
+                        this.setState({ riskAssessment: "critical" })
+                    })
                     .catch(err => console.log(err))
-
             })
-
             .catch(err => console.log(err));
-
     };
 
     render() {
-        // const { assessments } = this.state
+        const { riskAssessment } = this.state
 
-        return (
-            <div className="container">
-                {/* use a button to that changes color upon onclick */}
-                {/* use helper function to calculate the risk value (1-100) */}
-                <div className="fieldset">
-                    <h3>LEVEL {this.props.level}</h3>
-                    {/* Use horizontal list buttons  */}
-                    {/* conditional rendering for buttons */}
+        if (riskAssessment === "") {
 
-                    <div className="switch-basics-example button-group-stack-example">
-                        <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            {assessments.map((item) => {
-                                let propName = Object.keys(item)
-                                let propVal = Object.values(item)
-                                return (
-                                    <div className="grid-basics-example">
-                                        <Switch
-                                            onChange={this.handleSwitch}
-                                            key={propName}
-                                            input={{ name: propName, value: propVal }}
-                                            active={{ text: 'Yes' }}
-                                            inactive={{ text: 'No' }}
-                                        />
-                                        {/* user property name */}
-                                        <p>{propName}</p>
-                                    </div>)
-                            })}
-                        </ButtonGroup>
+            return (
+                <div className="container">
+                    {/* use a button to that changes color upon onclick */}
+                    {/* use helper function to calculate the risk value (1-100) */}
+                    <div className="fieldset">
+                        <h3>LEVEL {this.props.level}</h3>
+                        {/* Use horizontal list buttons  */}
+                        {/* conditional rendering for buttons */}
+
+                        <div className="switch-basics-example button-group-stack-example">
+                            <ButtonGroup stackFor={Breakpoints.SMALL}>
+                                {assessments.map((item) => {
+                                    let propName = Object.keys(item)
+                                    let propVal = Object.values(item)
+                                    return (
+                                        <div className="grid-basics-example">
+                                            <Switch
+                                                onChange={this.handleSwitch}
+                                                key={propName}
+                                                input={{ name: propName, value: propVal }}
+                                                active={{ text: 'Yes' }}
+                                                inactive={{ text: 'No' }}
+                                            />
+                                            {/* user property name */}
+                                            <p>{propName}</p>
+                                        </div>)
+                                })}
+                            </ButtonGroup>
+                        </div>
+
+                        <div className="button-small expanded">
+                            <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment}>Submit Survey</Button>
+                        </div>
+
                     </div>
+                </div >
+            )
 
-                    <div className="button-small expanded">
-                        <Button isExpanded data-levelid={this.props.levelId} onClick={this.handleClick}>Submit Survey</Button>
-                    </div>
+        } else if (riskAssessment === "normal" || riskAssessment === "caution" || riskAssessment === "critical") {
+            return (
+                <Status
+                    level={this.props.level}
+                    levelId={this.props.levelId}
+                    riskAssessmentResult={riskAssessment}
+                />
+            )
 
-                </div>
-            </div >
-        )
+        }
+
     }
 }
-
 
 export default List;
