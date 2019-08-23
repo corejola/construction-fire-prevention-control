@@ -13,7 +13,7 @@ import Assessment from "./Assessment/index";
 import TitlePage from './TitlePage/TitlePage';
 import UserGuide from './UserGuide/UserGuide';
 import PrivateRoute from "./utils/PrivateRoute";
-import WeatherForm from './WeatherForm/WeatherForm';
+import Weather from './Weather/Weather';
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -95,7 +95,7 @@ export default class MainRouter extends Component {
           />
           <Route strict exact path="/userguide" component={UserGuide}
           />
-          <Route strict exact path="/weatherform" component={WeatherForm}
+          <Route strict exact path="/weather" component={Weather}
           />
           <Route strict exact path="/pricing" render={props =>
             <Pricing
