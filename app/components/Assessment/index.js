@@ -23,8 +23,8 @@ class Assessment extends Component {
 
         API.getTowers()
             .then(res => {
-                this.setState({ levels: res.data[0].levels }, function () {
-                })
+                this.setState({ levels: res.data[0].levels },
+                    () => { })
             })
             .catch(err => console.log(err))
     };
