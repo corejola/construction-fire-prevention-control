@@ -2,271 +2,325 @@
     {
         "id": 1,
         "level": "B2",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 67
     },
     {
         "id": 2,
         "level": "B2",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 34
     },
     {
         "id": 3,
         "level": "Ground",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 44
     },
     {
         "id": 4,
         "level": "2",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 55
     },
     {
         "id": 5,
         "level": "3",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 43
     },
     {
         "id": 6,
         "level": "5",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 7,
         "level": "6",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 8,
         "level": "7",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 9,
         "level": "8",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 10,
         "level": "9",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 11,
         "level": "10",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 12,
         "level": "11",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 13,
         "level": "12",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 14,
         "level": "15",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 15,
         "level": "16",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 16,
         "level": "17",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 17,
         "level": "18",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 18,
         "level": "19",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 19,
         "level": "20",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 20,
         "level": "21",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 21,
-        "level": "22/Mechanical",
-        "tower": "TOWER 1"
+        "level": "22/MECH",
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 22,
         "level": "23",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 23,
         "level": "24",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 24,
         "level": "25",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 25,
         "level": "26",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 26,
         "level": "27",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 27,
         "level": "28",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 28,
         "level": "29",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 29,
         "level": "30",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 30,
         "level": "31",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 31,
         "level": "32",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 32,
         "level": "33",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 33,
         "level": "34",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 34,
         "level": "35",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 35,
         "level": "36",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 36,
         "level": "37",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 37,
         "level": "38",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 38,
         "level": "39",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 39,
         "level": "40",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 40,
         "level": "41",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 41,
         "level": "42",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 42,
         "level": "43",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 43,
         "level": "45",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 44,
         "level": "47",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 45,
         "level": "48",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 46,
         "level": "49",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 47,
         "level": "50",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 48,
         "level": "PH1",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 49,
         "level": "PH2",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 50,
         "level": "PH3",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 51,
         "level": "PH4",
-        "tower": "TOWER 1"
+        "tower": "TOWER 1",
+        "score": 20
     },
     {
         "id": 52,
-        "level": "ROOF",
-        "tower": "TOWER 1"
+        "level": "Roof",
+        "tower": "TOWER 1",
+        "score": 75
     },
     {
         "id": 53,
-        "level": "MECH. ELEV. MACH.",
-        "tower": "TOWER 1"
+        "level": "MECH. E.",
+        "tower": "TOWER 1",
+        "score": 90
     },
     {
         "id": 54,
-        "level": "MECH. ROOF",
-        "tower": "TOWER 1"
+        "level": "MECH. R",
+        "tower": "TOWER 1",
+        "score": 80
     }
 ]
