@@ -27,10 +27,9 @@ class List extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
 
-    // componentDidUpdate() {
-    //     console.log(this.state.riskScore)
-
-    // }
+    componentDidUpdate() {
+        console.log(`RiskScore ${this.state.riskScore}, condition ${this.state.condition}`)
+    }
 
     scoreLogic() {
         // sum of riskScore
@@ -38,36 +37,35 @@ class List extends Component {
 
         let score = []
 
-        extinguisher ? score.push(10) : score.push(0);
-        alarms ? score.push(20) : score.push(0);
-        detection ? score.push(20) : score.push(0);
-        riser ? score.push(20) : score.push(0);
-        egress ? score.push(30) : score.push(0);
+        extinguisher ? score.push(10) : null;
+        alarms ? score.push(20) : null;
+        detection ? score.push(20) : null;
+        riser ? score.push(20) : null;
+        egress ? score.push(30) : null;
 
         let sum = score.reduce((a, b) => a + b)
 
         this.setState({
             riskScore: sum
-        })
+        }, () => { console.log(riskScore) })
 
         if (riskScore > 67) {
             this.setState({
                 condition: "Normal"
-            }, () => {
-                if (riskScore > 34 && riskScore < 66) {
-                    this.setState({
-                        condition: "Caution"
-                    }, () => {
-                        if (riskScore < 33) {
-                            this.setState({
-                                condition: "Critical"
-                            })
-                        }
-                    })
-                }
-            })
+            }, () => { console.log(condition) })
         }
-        console.log(`ScoreLogic Sum: ${sum}, RiskScore ${riskScore}, condition ${condition}`)
+        if (riskScore > 34 && riskScore < 66) {
+            this.setState({
+                condition: "Caution"
+            }, () => { console.log(condition) })
+        }
+        if (riskScore < 33) {
+            this.setState({
+                condition: "Critical"
+            },
+                () => { console.log(condition) })
+        }
+
     }
 
     // handleClick function that changes the state of the 
@@ -143,7 +141,7 @@ class List extends Component {
                         </div>
 
                         <div className="button-small expanded">
-                            <Button isExpanded onClick={this.handleClick}>Submit Survey</Button>
+                            <Button isExpanded onClick={this.scoreLogic}>Submit Survey</Button>
                         </div>
                     </div>
                 </div>
