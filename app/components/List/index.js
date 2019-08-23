@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// CSS for horizontal list
 import { Button, Switch, ButtonGroup, Breakpoints, Callout } from 'react-foundation'
 
 const assessments = [
@@ -20,45 +19,44 @@ class List extends Component {
             riser: false,
             egress: false,
             riskScore: 0,
-            riskAssessment: "",
+            condition: "",
             status: "open"
-            // risk assessment can be a function of the sum of the values of each item in the state
         };
         this.handleSwitch = this.handleSwitch.bind(this);
         this.scoreLogic = this.scoreLogic.bind(this);
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidUpdate() {
-        console.log(this.state)
+        console.log(this.state.riskScore)
+        console.log(this.state.condition)
     }
 
     scoreLogic() {
-        // code to assess the fire risk level based on the state of the level.
-        // loop throught the this.state.assessment object (.map or forEach)
-        // .push into this.state.riskScore
+        console.log("hit")
         // sum of riskScore
-        // if risk score is <33 = Normal/Green
-        // if risk score is >34 && <67 = Caution/Yellow
-        // if risk score is > 68 = Critial/Red
         const { extinguisher, alarms, detection, riser, egress } = this.state
-        console.log(this.state)
+
         let score = []
-        extinguisher ? score.push(10) : null;
-        alarms ? score.push(20) : null;
-        detection ? score.push(20) : null;
-        riser ? score.push(40) : null;
-        egress ? score.push(50) : null;
+
+        extinguisher ? score.push(10) : score.push(0);
+        alarms ? score.push(20) : score.push(0);
+        detection ? score.push(20) : score.push(0);
+        riser ? score.push(20) : score.push(0);
+        egress ? score.push(30) : score.push(0);
+
+        let sum = score.reduce((a, b) => a + b)
 
         this.setState({
-            riskScore: score.reduce((a, b) => a + b)
+            riskScore: sum
         })
+
+        console.log(sum)
     }
 
     // handleClick function that changes the state of the 
     handleSwitch() {
         const { name } = event.target
-        console.log(`Name: ${name}`)
-
         switch (name) {
             case 'extinguisher':
                 this.setState({ extinguisher: !this.state.extinguisher })
@@ -79,47 +77,39 @@ class List extends Component {
     }
 
     handleClick() {
-        const { riskScore } = this.state
-        //  Conditional rendering
-        // if risk score is <33 = Normal/Green
-        // if risk score is >34 && <67 = Caution/Yellow
-        // if risk score is > 68 = Critial/Red
-        // handle Risk Assessment score calculation
         this.scoreLogic()
+        // code to assess the fire risk level based on the state of the level.
+        const { riskScore } = this.state
         console.log(riskScore)
-        if (riskScore < 33) {
-            // Render a Green/Normal
-            {
-                <div className="callout-basics-example">
-                    <Callout>
-                        <h5> Normal.</h5>
-                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-                        <a>It's dangerous to go alone, take this.</a>
-                    </Callout>
-                </div>
-            }
-        }
-        if (riskScore > 34 && riskScore < 66) {
-            // Render a Yellow/Caution
-        }
+
         if (riskScore > 67) {
-            // Render a Red/Critial
+            this.setState({
+                condition: "Normal"
+            })
         }
-
-        alert("Survey Submitted")
-    }
-
-    renderPage() {
-        if (this.state.view === "open") {
-            return this.assessmentCard
-        } else if (this.state.view === "complete") {
-            return this.resultCard
+        else if (riskScore > 34 && riskScore < 66) {
+            this.setState({
+                condition: "Caution"
+            })
+        }
+        else if (riskScore < 33) {
+            this.setState({
+                condition: "Critical"
+            })
         }
     }
 
     assessmentCard() {
-
+        // store JSX for the switches
     }
+
+    // renderPage() {
+    //     if (this.state.view === "open") {
+    //         return this.assessmentCard
+    //     } else if (this.state.view === "complete") {
+    //         return this.resultCard
+    //     }
+    // }
 
     render() {
         return (
