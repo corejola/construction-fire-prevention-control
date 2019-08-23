@@ -45,9 +45,10 @@
   margin-bottom: 10px;
   position: relative;
   margin: 20px auto;
-  background-color: steelblue;
+  background-color: #00AACD;
   filter: brightness(95%);
   font-size: 26px;
+  color: white;
 }
 
 .loginmodal-container input[type=text], input[type=password] {
