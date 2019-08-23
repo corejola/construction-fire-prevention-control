@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import moment from 'moment';
+
 import { Callout } from 'react-foundation'
 
 const API_KEY = '4f1776abfbce218d3ff8ea54a393591f';
@@ -43,7 +45,7 @@ export default class WeatherForm extends Component {
 
         this.setState({loading: true});
 
-        axios.get("http://ap.openweathermap.org/data/2.5/weather", {
+        axios.get("http://api.openweathermap.org/data/2.5/weather", {
             params: {
                 appid: API_KEY,
                 q: `${city},${country}`
@@ -131,15 +133,16 @@ export default class WeatherForm extends Component {
                
                 {/* <button>Get Current Weather</button> */}
                 {form
-                    ? <button onClick={this.getWeather}>get weather</button>
+                    ? <button onClick={this.getWeather}>Get Current Weather</button>
                     : <button onClick={this.searchAgain}>search weather again</button>
                 }
                 
                 {error && <h1 style={{color: "red"}}>{errorMessage}</h1>}
                 <div className="callout success">
                     <Callout>
+                        <h5>{moment().format('dddd, MMMM Do, h:mm a')}</h5>
                         <h5>Get Current Weather</h5>
-                        <a>Find out temperature, conditions, and more...</a>
+                        <a>Temperature, conditions, and more...</a>
                     </Callout>
                 </div>
             </div>
