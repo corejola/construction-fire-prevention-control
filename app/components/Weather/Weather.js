@@ -138,7 +138,7 @@ export default class Weather extends Component {
                     : <button className="buttonSearch" onClick={this.searchAgain}>search weather again</button>
                 }
                 
-                {error && <h1 style={{color: "red"}}>{errorMessage}</h1>}
+                {error && <h1 className="errorMessage" style={{color: "red"}}>{errorMessage}</h1>}
                 <div className="callout primary small">
                     <Callout>
                         <h5>{moment().format('dddd, MMMM Do, h:mm a')}</h5>
