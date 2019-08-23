@@ -18,6 +18,7 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
+            score: [],
             riskScore: 0,
             condition: "",
             status: "open"
@@ -74,6 +75,7 @@ class List extends Component {
         switch (name) {
             case 'extinguisher':
                 this.setState({ extinguisher: !this.state.extinguisher })
+                extinguisher ? this.setState({ score: [...this.state.score, 10] }) : null;
                 break;
             case 'alarms':
                 this.setState({ alarms: !this.state.alarms })
