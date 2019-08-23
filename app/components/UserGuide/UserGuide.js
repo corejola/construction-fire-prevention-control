@@ -20,7 +20,7 @@ const UserGuide = props => {
             </div>
             <div className="d-flex flex-lg-row justify-content-center">
                 <div className="p-2">
-                    <Link to="/titlepage" className="GoBackButton">Go Back</Link>
+                    <Link to="/" className="GoBackButton">Home</Link>
                 </div>
             </div>
         </div>

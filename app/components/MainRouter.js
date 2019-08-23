@@ -7,7 +7,6 @@ import {
 import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
-import Pricing from "./Pricing";
 import axios from 'axios';
 import Assessment from "./Assessment/index";
 import TitlePage from './TitlePage/TitlePage';
@@ -66,7 +65,7 @@ export default class MainRouter extends Component {
           <PrivateRoute
             exact
             path="/"
-            component={Main}
+            component={TitlePage}
             authenticate={this.authenticate}
             deAuthenticate={this.deAuthenticate}
             authenticated={this.state.authenticated}
@@ -91,20 +90,11 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          <Route strict exact path="/titlepage" component={TitlePage}
-          />
+          {/* <Route strict exact path="/titlepage" component={TitlePage}
+          /> */}
           <Route strict exact path="/userguide" component={UserGuide}
           />
           <Route strict exact path="/weather" component={Weather}
-          />
-          <Route strict exact path="/pricing" render={props =>
-            <Pricing
-              {...props}
-              authenticate={this.authenticate}
-              deAuthenticate={this.deAuthenticate}
-              authenticated={this.state.authenticated}
-              logout={this.logout}
-            />}
           />
           <Route strict exact path="/assessment" component={Assessment} />
         </Switch>

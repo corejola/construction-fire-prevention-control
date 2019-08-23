@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 // CSS for horizontal list
 import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation'
 
+import API from "../utils/API";
+
 const assessments = [
     { extinguisher: false },
     { alarms: false },
     { detection: false },
     { riser: false },
     { egress: false }
-]
+];
 
 class List extends Component {
     constructor(props) {
@@ -24,11 +26,12 @@ class List extends Component {
             // risk assessment can be a function of the sum of the values of each item in the state
         }
         this.handleSwitch = this.handleSwitch.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidUpdate() {
         console.log(this.state)
-    }
+    };
 
     scoreLogic() {
         // code to assess the fire risk level based on the state of the level.
@@ -47,7 +50,7 @@ class List extends Component {
         if (egress === true) {
 
         }
-    }
+    };
 
     // handleClick function that changes the state of the 
     handleSwitch() {
@@ -71,13 +74,39 @@ class List extends Component {
                 this.setState({ egress: !this.state.egress })
                 break;
         }
-    }
+    };
 
     handleClick() {
-        console.log(`submit clicked`)
-        // handle Risk Assessment score calculation
-        alert("Survey Submitted")
-    }
+
+        API.getUser()
+
+            .then(res => {
+
+                console.log(res.data)
+
+                API.saveAssessment(
+
+                    this.props.levelId,
+                    {
+                        extinguishers: this.state.extinguisher,
+                        smokeFireDetection: this.state.detection,
+                        smokeFireAlarms: this.state.alarms,
+                        fireRisers: this.state.riser,
+                        emergencyEgress: this.state.egress,
+                        riskAssessmentResult: this.state.riskAssessment,
+                        assessmentDate: new Date(),
+                        user: res.data._id
+
+                    })
+                    .then(res => console.log(res))
+
+                    .catch(err => console.log(err))
+
+            })
+
+            .catch(err => console.log(err));
+
+    };
 
     render() {
         // const { assessments } = this.state
@@ -98,21 +127,22 @@ class List extends Component {
                                 let propVal = Object.values(item)
                                 return (
                                     <div className="grid-basics-example">
-                                        <Switch onChange={this.handleSwitch}
+                                        <Switch
+                                            onChange={this.handleSwitch}
                                             key={propName}
                                             input={{ name: propName, value: propVal }}
                                             active={{ text: 'Yes' }}
                                             inactive={{ text: 'No' }}
                                         />
                                         {/* user property name */}
-                                        <p> {propName}</p>
+                                        <p>{propName}</p>
                                     </div>)
                             })}
                         </ButtonGroup>
                     </div>
 
                     <div className="button-small expanded">
-                        <Button isExpanded onClick={this.handleClick}>Submit Survey</Button>
+                        <Button isExpanded data-levelid={this.props.levelId} onClick={this.handleClick}>Submit Survey</Button>
                     </div>
 
                 </div>
