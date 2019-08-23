@@ -20,7 +20,8 @@ class List extends Component {
             riser: false,
             egress: false,
             riskScore: 0,
-            riskAssessment: ""
+            riskAssessment: "",
+            status: "open"
             // risk assessment can be a function of the sum of the values of each item in the state
         };
         this.handleSwitch = this.handleSwitch.bind(this);
@@ -109,6 +110,14 @@ class List extends Component {
     }
 
     renderPage() {
+        if (this.state.view === "open") {
+            return this.assessmentCard
+        } else if (this.state.view === "complete") {
+            return this.resultCard
+        }
+    }
+
+    assessmentCard() {
 
     }
 
@@ -121,30 +130,31 @@ class List extends Component {
                     <h3>LEVEL {this.props.level}</h3>
                     {/* Use horizontal list buttons  */}
                     {/* conditional rendering for buttons */}
-                    <div className="switch-basics-example button-group-stack-example">
-                        <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            {assessments.map((item) => {
-                                let propName = Object.keys(item)
-                                let propVal = Object.values(item)
-                                return (
-                                    <div className="grid-basics-example">
-                                        <Switch onChange={this.handleSwitch}
-                                            key={propName}
-                                            input={{ name: propName, value: propVal }}
-                                            active={{ text: 'Yes' }}
-                                            inactive={{ text: 'No' }}
-                                        />
-                                        {/* user property name */}
-                                        <p> {propName}</p>
-                                    </div>)
-                            })}
-                        </ButtonGroup>
-                    </div>
+                    <div>
+                        <div className="switch-basics-example button-group-stack-example">
+                            <ButtonGroup stackFor={Breakpoints.SMALL}>
+                                {assessments.map((item) => {
+                                    let propName = Object.keys(item)
+                                    let propVal = Object.values(item)
+                                    return (
+                                        <div className="grid-basics-example">
+                                            <Switch onChange={this.handleSwitch}
+                                                key={propName}
+                                                input={{ name: propName, value: propVal }}
+                                                active={{ text: 'Yes' }}
+                                                inactive={{ text: 'No' }}
+                                            />
+                                            {/* user property name */}
+                                            <p> {propName}</p>
+                                        </div>)
+                                })}
+                            </ButtonGroup>
+                        </div>
 
-                    <div className="button-small expanded">
-                        <Button isExpanded onClick={this.handleClick}>Submit Survey</Button>
+                        <div className="button-small expanded">
+                            <Button isExpanded onClick={this.handleClick}>Submit Survey</Button>
+                        </div>
                     </div>
-
                 </div>
             </div >
         )
