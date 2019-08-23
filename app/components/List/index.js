@@ -18,7 +18,7 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
-            score: [],
+            // score: [],
             riskScore: 0,
             condition: "",
             status: "open"
@@ -26,15 +26,18 @@ class List extends Component {
         this.handleSwitch = this.handleSwitch.bind(this);
         this.scoreLogic = this.scoreLogic.bind(this);
         this.handleClick = this.handleClick.bind(this)
+        this.conditionAssessment = this.conditionAssessment.bind(this)
     }
 
     componentDidUpdate() {
         console.log(`RiskScore ${this.state.riskScore}, condition ${this.state.condition}`)
+        // this.scoreLogic()
     }
+
 
     scoreLogic() {
         // sum of riskScore
-        const { extinguisher, alarms, detection, riser, egress, riskScore, condition } = this.state
+        const { extinguisher, alarms, detection, riser, egress, riskScore } = this.state
 
         let score = []
 
@@ -50,6 +53,27 @@ class List extends Component {
             riskScore: sum
         }, () => { console.log(riskScore) })
 
+        // if (riskScore > 67) {
+        //     this.setState({
+        //         condition: "Normal"
+        //     }, () => { console.log(condition) })
+        // }
+        // if (riskScore > 34 && riskScore < 66) {
+        //     this.setState({
+        //         condition: "Caution"
+        //     }, () => { console.log(condition) })
+        // }
+        // if (riskScore < 33) {
+        //     this.setState({
+        //         condition: "Critical"
+        //     },
+        //         () => { console.log(condition) })
+        // }
+
+    }
+
+    conditionAssessment() {
+        const { riskScore, condition } = this.state
         if (riskScore > 67) {
             this.setState({
                 condition: "Normal"
@@ -64,53 +88,41 @@ class List extends Component {
             this.setState({
                 condition: "Critical"
             },
-                () => { console.log(condition) })
+                () => { console.log(condition, "hit") })
         }
-
     }
 
     // handleClick function that changes the state of the 
     handleSwitch() {
         const { name } = event.target
+        const { extinguisher, alarms, detection, riser, egress } = this.state
         switch (name) {
             case 'extinguisher':
-                this.setState({ extinguisher: !this.state.extinguisher })
-                extinguisher ? this.setState({ score: [...this.state.score, 10] }) : null;
+                this.setState({ extinguisher: !extinguisher });
                 break;
             case 'alarms':
-                this.setState({ alarms: !this.state.alarms })
+                this.setState({ alarms: !alarms })
                 break;
             case 'detection':
-                this.setState({ detection: !this.state.detection })
+                this.setState({ detection: !detection })
                 break;
             case 'riser':
-                this.setState({ riser: !this.state.riser })
+                this.setState({ riser: !riser })
                 break;
             case 'egress':
-                this.setState({ egress: !this.state.egress })
+                this.setState({ egress: !egress })
                 break;
         }
     }
 
     handleClick() {
         this.scoreLogic()
+        this.conditionAssessment()
         // code to assess the fire risk level based on the state of the level.
 
-        console.log(`handleCLick riskScore ${this.state.riskScore}`)
-        console.log(`handleClick condition ${this.state.condition}`)
+        console.log(`handleCLick riskScore: ${this.state.riskScore}`)
+        console.log(`handleClick condition: ${this.state.condition}`)
     }
-
-    assessmentCard() {
-        // store JSX for the switches
-    }
-
-    // renderPage() {
-    //     if (this.state.view === "open") {
-    //         return this.assessmentCard
-    //     } else if (this.state.view === "complete") {
-    //         return this.resultCard
-    //     }
-    // }
 
     render() {
         return (
@@ -143,7 +155,7 @@ class List extends Component {
                         </div>
 
                         <div className="button-small expanded">
-                            <Button isExpanded onClick={this.scoreLogic}>Submit Survey</Button>
+                            <Button isExpanded onClick={this.handleClick}>Submit Survey</Button>
                         </div>
                     </div>
                 </div>
