@@ -9,8 +9,12 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Pricing from "./Pricing";
 import axios from 'axios';
-import Assessment from "./Assessment";
+import Assessment from "./Assessment/index";
+import TitlePage from './TitlePage/TitlePage';
+import UserGuide from './UserGuide/UserGuide';
 import PrivateRoute from "./utils/PrivateRoute";
+import WeatherForm from './WeatherForm/WeatherForm';
+import WeatherContainer from './WeatherContainer/WeatherContainer';
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -70,7 +74,7 @@ export default class MainRouter extends Component {
             logout={this.logout}
           />
           />
-          <Route exact path="/login" render={props =>
+          <Route strict exact path="/login" render={props =>
             <Login
               {...props}
               authenticate={this.authenticate}
@@ -79,7 +83,7 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          <Route exact path="/signup" render={props =>
+          <Route strict exact path="/signup" render={props =>
             <Signup
               {...props}
               authenticate={this.authenticate}
@@ -88,8 +92,15 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          <Route path="/pricing" render={props =>
-
+          <Route strict exact path="/titlepage" component={TitlePage}
+          />
+          <Route strict exact path="/userguide" component={UserGuide}
+          />
+          <Route strict exact path="/weather" component={WeatherContainer}
+          />
+          <Route strict exact path="/weatherform" component={WeatherForm}
+          />
+          <Route strict exact path="/pricing" render={props =>
             <Pricing
               {...props}
               authenticate={this.authenticate}
@@ -98,18 +109,7 @@ export default class MainRouter extends Component {
               logout={this.logout}
             />}
           />
-          {/* <Route exact path="/assessment" render={props =>
-            this.state.authenticated ?
-              (<Assessment
-              />) :
-              <Redirect
-                to={{
-                  pathname: '/login',
-                  state: { from: props.location }
-                }} /> */}
-          {/* <PrivateRoute exact path="/assessment" component={Assessment} /> */}
-          <Route exact path="/assessment" component={Assessment} />
-          } />
+          <Route strict exact path="/assessment" component={Assessment} />
         </Switch>
       </Router>
     );

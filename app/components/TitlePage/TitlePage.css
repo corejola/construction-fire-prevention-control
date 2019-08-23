@@ -1,0 +1,53 @@
+  .paragraph {
+    margin: 25px 0px;
+ }
+ 
+  .tower3, .tower2,.tower1 {
+    /* border: 1px solid #3079ed; */
+    border: 0px;
+    color: white;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #008080;
+    margin: 30px 30px;
+    padding: 20px 150px ;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: block;
+    /* display: inline-block; */
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+  }
+
+  .podium {
+    /* border: 1px solid #3079ed; */
+    border: 0px;
+    color: white;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #008080;
+    margin: 30px 30px;
+    padding: 20px 200px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: block;
+    /* display: inline-block; */
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+  }
+
+  .trending, .assessment, .submit {
+    /* border: 1px solid #3079ed; */
+    border: 0px;
+    color: white;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #008080;
+    margin: 20px 10px;
+    padding: 20px 115px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: block;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+  }

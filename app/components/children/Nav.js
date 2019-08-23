@@ -59,6 +59,12 @@ export default class Nav extends Component {
                   <p>OFFLINE MODE</p>
                 </a>
               </li>
+              <li>
+                <a className="page-scroll nav-right-text" href="/titlepage">
+                  <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
+                  <p>TITLEPAGE</p>
+                </a>
+              </li>
               {this.props.authenticated ? (
                 <li>
                   <a className="page-scroll nav-right-text" href="/users/sign-out" data-toggle="modal">
