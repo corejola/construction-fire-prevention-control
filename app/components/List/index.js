@@ -27,15 +27,14 @@ class List extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
 
-    componentDidUpdate() {
-        console.log(this.state.riskScore)
-        console.log(this.state.condition)
-    }
+    // componentDidUpdate() {
+    //     console.log(this.state.riskScore)
+
+    // }
 
     scoreLogic() {
-        console.log("hit")
         // sum of riskScore
-        const { extinguisher, alarms, detection, riser, egress } = this.state
+        const { extinguisher, alarms, detection, riser, egress, riskScore, condition } = this.state
 
         let score = []
 
@@ -51,7 +50,24 @@ class List extends Component {
             riskScore: sum
         })
 
-        console.log(sum)
+        if (riskScore > 67) {
+            this.setState({
+                condition: "Normal"
+            }, () => {
+                if (riskScore > 34 && riskScore < 66) {
+                    this.setState({
+                        condition: "Caution"
+                    }, () => {
+                        if (riskScore < 33) {
+                            this.setState({
+                                condition: "Critical"
+                            })
+                        }
+                    })
+                }
+            })
+        }
+        console.log(`ScoreLogic Sum: ${sum}, RiskScore ${riskScore}, condition ${condition}`)
     }
 
     // handleClick function that changes the state of the 
@@ -79,24 +95,9 @@ class List extends Component {
     handleClick() {
         this.scoreLogic()
         // code to assess the fire risk level based on the state of the level.
-        const { riskScore } = this.state
-        console.log(riskScore)
 
-        if (riskScore > 67) {
-            this.setState({
-                condition: "Normal"
-            })
-        }
-        else if (riskScore > 34 && riskScore < 66) {
-            this.setState({
-                condition: "Caution"
-            })
-        }
-        else if (riskScore < 33) {
-            this.setState({
-                condition: "Critical"
-            })
-        }
+        console.log(`handleCLick riskScore ${this.state.riskScore}`)
+        console.log(`handleClick condition ${this.state.condition}`)
     }
 
     assessmentCard() {
