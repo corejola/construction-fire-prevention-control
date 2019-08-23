@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 });
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + '/public/favicon.ico'));
 const authCheck = require('./config/middleware/attachAuthenticationStatus');
 
 app.use(logger('dev'));
@@ -47,9 +47,11 @@ require('./routes')(app);
 
 app.get('*', (req, res) => {
   // res.sendFile(__dirname + "/public/index.html");
-  const rootHtmlPath = path.resolve(__dirname, '..', 'public', 'index.html');
-  res.sendFile(rootHtmlPath);
-})
+  // const rootHtmlPath = path.resolve(__dirname, '..', 'public', 'index.html');
+  // res.sendFile(rootHtmlPath);
+  // if (req.url === '/titlepage') 
+  res.redirect("/");
+});
 
 // our module get's exported as app.
 module.exports = app;

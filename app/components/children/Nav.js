@@ -25,7 +25,7 @@ export default class Nav extends Component {
               </li>
 
               <li>
-                <a className="page-scroll nav-left-text" href="/pricing"><p>PRICING</p></a>
+                <a className="page-scroll nav-left-text" href="/userguide"><p>USER GUIDE</p></a>
               </li>
               <li>
                 <a className="page-scroll nav-left-text" href="/assessment"><p>ASSESSMENTS</p></a>
@@ -48,15 +48,21 @@ export default class Nav extends Component {
               </li>
 
               <li>
-                <a className="page-scroll nav-right-text" href="/pricing">
+                <a className="page-scroll nav-right-text" href="/titlepage">
                   <img className="navigation-icons" src={require("../../img/shapes/Profile.png")} />
                   <p>PROFILE</p>
                 </a>
               </li>
               <li>
-                <a className="page-scroll nav-right-text" href="/trips">
+                <a className="page-scroll nav-right-text" href="/titlepage">
                   <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
                   <p>OFFLINE MODE</p>
+                </a>
+              </li>
+              <li>
+                <a className="page-scroll nav-right-text" href="/titlepage">
+                  <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
+                  <p>TITLEPAGE</p>
                 </a>
               </li>
               {this.props.authenticated ? (

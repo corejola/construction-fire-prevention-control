@@ -9,5 +9,4 @@ import MainRouter from './components/MainRouter';
 import 'foundation-sites/dist/css/foundation.min.css';
 
 // This code here allows us to render our main component (in this case Main)
-// ReactDOM.render(<MainRouter />, document.getElementById("app"));
 ReactDOM.render(<MainRouter />, document.getElementById("app"));
