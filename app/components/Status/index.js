@@ -15,15 +15,11 @@ function Status(props) {
                 {/* Use horizontal list buttons  */}
                 {/* conditional rendering for buttons */}
 
-                <Link color={props.riskAssessmentResult === "normal" ? Colors.SUCCESS
+                <Link isExpanded color={props.riskAssessmentResult === "normal" ? Colors.SUCCESS
                     : props.riskAssessmentResult === "caution" ? Colors.WARNING
                         : Colors.ALERT}>{props.riskAssessmentResult === "normal" ? normal
                             : props.riskAssessmentResult === "caution" ? caution
                                 : critical}</Link>
-
-                <div className="button-small expanded">
-                    <Button isExpanded data-levelid={props.levelId} onClick={props.submitAssessment}>Submit Survey</Button>
-                </div>
 
             </div>
         </div >
