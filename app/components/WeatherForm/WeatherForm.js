@@ -131,9 +131,8 @@ export default class WeatherForm extends Component {
                     : this.renderContent()
                 }
                
-                {/* <button>Get Current Weather</button> */}
                 {form
-                    ? <button onClick={this.getWeather}>Get Current Weather</button>
+                    ? <button className="button" onClick={this.getWeather}>Get Current Weather</button>
                     : <button onClick={this.searchAgain}>search weather again</button>
                 }
                 

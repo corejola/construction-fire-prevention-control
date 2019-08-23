@@ -14,7 +14,6 @@ import TitlePage from './TitlePage/TitlePage';
 import UserGuide from './UserGuide/UserGuide';
 import PrivateRoute from "./utils/PrivateRoute";
 import WeatherForm from './WeatherForm/WeatherForm';
-import WeatherContainer from './WeatherContainer/WeatherContainer';
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -95,8 +94,6 @@ export default class MainRouter extends Component {
           <Route strict exact path="/titlepage" component={TitlePage}
           />
           <Route strict exact path="/userguide" component={UserGuide}
-          />
-          <Route strict exact path="/weather" component={WeatherContainer}
           />
           <Route strict exact path="/weatherform" component={WeatherForm}
           />
