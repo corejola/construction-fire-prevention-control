@@ -1,0 +1,20 @@
+.paragraph {
+    margin: 25px 0px;
+ }
+
+ .brandName {
+   margin-bottom: 15px;
+ }
+
+ .risk {
+   margin-bottom: 50px;
+ }
+ .GoBackButton {
+  padding: 20px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 20px;
+}
+

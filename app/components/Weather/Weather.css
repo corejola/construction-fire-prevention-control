@@ -1,0 +1,27 @@
+
+.buttonGet {
+    color: white;
+    background: limegreen;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.buttonSearch {
+    color: white;
+    background: red;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.weatherData {
+ font-size: 20px;
+ font-weight: bold;
+}
