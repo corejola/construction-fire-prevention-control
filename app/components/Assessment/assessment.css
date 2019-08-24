@@ -1,9 +1,20 @@
-.home {
-    display: in-line block;
-    padding: 15px;
-    background-color: #4BA0A5;
+
+
+.button {
+    border: 0px;
     color: white;
-    font-weight: bold;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #4BA0A5;
+    margin-bottom: 15px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: bolder;
     border-radius: 6px;
-    font-size: 20px
+    display: inline-block;
+}
+
+.tower {
+    font-weight: bolder;
 }

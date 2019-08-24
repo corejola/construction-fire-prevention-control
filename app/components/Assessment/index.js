@@ -36,11 +36,11 @@ class Assessment extends Component {
             
             <div className="container">
                 <div className="link">
-                    <Link to="/" className="home">HOME</Link>
+                    <Link to="/" className="button">HOME</Link>
                 </div>
                 {/* .map over fake data */}
                 {/* Use list  */}
-                <h2>{tower} Risk Assessment</h2>
+                <h2 className="tower">{tower} Risk Assessment</h2>
                 {levels.map(item => {
                     return (
                         <List
