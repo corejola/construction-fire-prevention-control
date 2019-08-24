@@ -142,7 +142,7 @@ class List extends Component {
         if (condition === "") {
 
             return (
-            
+
                 <div className="container">
                     {/* use a button to that changes color upon onclick */}
                     {/* use helper function to calculate the risk value (1-100) */}
@@ -176,12 +176,12 @@ class List extends Component {
                         <div className="button-small expanded">
                             <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment} className="submit">Submit Survey</Button>
                         </div>
-                
+
                     </div>
-                    
+
                 </div >
-                
-             
+
+
             )
         } else if (condition === "normal" || condition === "caution" || condition === "critical") {
             return (
