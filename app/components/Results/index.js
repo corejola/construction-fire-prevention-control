@@ -1,7 +1,8 @@
 import React from "react";
 import * as d3 from "d3";
 import "./style.css"
-import database from "../../data/database.json"
+// import database from "../../data/database.json"
+import API from "../utils/API"
 import { Button } from 'react-foundation'
 
 

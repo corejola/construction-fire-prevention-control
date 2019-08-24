@@ -10,4 +10,6 @@ router.get('/', authCheck);
 
 router.post('/new/:id', authCheck, assessment_api.postAssessment);
 
+router.get('/current/', authCheck, assessment_api.currentAssessment)
+
 module.exports = router;
