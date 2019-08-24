@@ -37,7 +37,7 @@ const TitlePage = props => {
                         <Link to="/assessment" className="tower1">TOWER 1</Link>
                     </div>
                     <div className="p-2">
-                        <Link to="/weather" className="tower2">TOWER 2 (TBD)</Link>
+                        <Link to="/" className="tower2">TOWER 2 (TBD)</Link>
                     </div>
                 </div>
                 <div className="d-flex flex-lg-row justify-content-center">
