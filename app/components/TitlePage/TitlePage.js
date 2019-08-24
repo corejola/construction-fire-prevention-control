@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Weather from '../Weather/Weather';
-
+import { Button } from 'react-foundation';
 import './TitlePage.css'
 
 const TitlePage = props => {
@@ -65,7 +65,7 @@ const TitlePage = props => {
             </div>
             <div className="d-flex flex-sm-row justify-content-center">
                 <div className="p-2">
-                    <Link to="/login" className="logout">Log Out</Link>
+                    <Button onClick={props.logout} className="logout">Log Out</Button>
                 </div>
             </div>
         </div>
