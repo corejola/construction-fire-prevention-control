@@ -5,6 +5,14 @@ import database from "../../data/database.json";
 import API from "../utils/API"
 import { Button } from 'react-foundation'
 
+const database = () => {
+    API.viewRiskAssessment()
+        .then(res => {
+            // return res.data[0].levels
+            return res.data;
+        })
+        .catch(err => console.log(err))
+};
 
 //---------- CONVERT DATASET ----------//
 const dataset = [];
