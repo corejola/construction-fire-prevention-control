@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation';
 import API from "../utils/API";
 import Status from "../Status";
+import { Link } from 'react-router-dom';
 
 const assessments = [
     { extinguisher: false },
