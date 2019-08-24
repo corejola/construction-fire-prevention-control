@@ -21,7 +21,7 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
-            // score: [],
+
             riskScore: 0,
             condition: ""
         };
@@ -32,14 +32,13 @@ class List extends Component {
         this.submitAssessment - this.submitAssessment.bind(this)
     }
 
-    componentDidUpdate() {
-        console.log(`RiskScore ${this.state.riskScore}, condition ${this.state.condition}`)
-        console.log(this.state)
-    }
+    // componentDidUpdate() {
+    //     console.log(`RiskScore ${this.state.riskScore}, condition ${this.state.condition}`)
+    //     console.log(this.state)
+    // }
 
     scoreLogic() {
         // sum of riskScore
-        console.log("hit")
         const { extinguisher, alarms, detection, riser, egress, riskScore } = this.state
 
         let score = []
@@ -52,31 +51,36 @@ class List extends Component {
 
         let sum = score.reduce((a, b) => a + b)
 
-        this.setState({ riskScore: sum }, () => { console.log(riskScore) })
+        this.setState({ riskScore: sum },
+            () => {
+                console.log(riskScore)
+                this.conditionAssessment()
+            })
     }
 
     conditionAssessment() {
         const { riskScore, condition } = this.state
         if (riskScore > 67) {
             this.setState({
-                condition: "Normal"
+                condition: "normal"
             }, () => { console.log(condition) })
         }
         if (riskScore > 34 && riskScore < 66) {
             this.setState({
-                condition: "Caution"
+                condition: "caution"
             }, () => { console.log(condition) })
         }
         if (riskScore < 33) {
             this.setState({
-                condition: "Critical"
+                condition: "critical"
             },
-                () => { console.log(condition, "hit") })
+                () => { console.log(condition) })
         }
     };
 
     // submitAssessment function that changes the state of the 
     handleSwitch() {
+
         const { name } = event.target
         const { extinguisher, alarms, detection, riser, egress } = this.state
         switch (name) {
@@ -96,23 +100,11 @@ class List extends Component {
                 this.setState({ egress: !egress }, () => { console.log(egress) })
                 break;
         }
-
-        console.log(this.state)
     };
 
-    handleClick() {
-        this.scoreLogic()
-        this.conditionAssessment()
-        // code to assess the fire risk level based on the state of the level.
-
-        console.log(`handleCLick riskScore: ${this.state.riskScore}`)
-        console.log(`handleClick condition: ${this.state.condition}`)
-    }
-
     submitAssessment() {
-
+        // calculates the logic based on current state & updates mongoose
         this.scoreLogic()
-        this.conditionAssessment()
 
         API.getUser()
 
@@ -146,56 +138,57 @@ class List extends Component {
     render() {
         const { condition } = this.state
 
-        // if (condition === "") {
+        if (condition === "") {
 
-        return (
-            <div className="container">
-                {/* use a button to that changes color upon onclick */}
-                {/* use helper function to calculate the risk value (1-100) */}
-                <div className="fieldset">
-                    <h3>LEVEL {this.props.level}</h3>
-                    {/* Use horizontal list buttons  */}
-                    {/* conditional rendering for buttons */}
+            return (
+                <div className="container">
+                    {/* use a button to that changes color upon onclick */}
+                    {/* use helper function to calculate the risk value (1-100) */}
+                    <div className="fieldset">
+                        <h3>LEVEL {this.props.level}</h3>
 
-                    <div className="switch-basics-example button-group-stack-example">
-                        <ButtonGroup stackFor={Breakpoints.SMALL}>
-                            {assessments.map((item) => {
-                                let propName = Object.keys(item)
-                                let propVal = Object.values(item)
-                                return (
-                                    <div className="grid-basics-example">
-                                        <Switch
-                                            onChange={this.handleSwitch}
-                                            key={propName}
-                                            input={{ name: propName, value: propVal }}
-                                            active={{ text: 'Yes' }}
-                                            inactive={{ text: 'No' }}
-                                        />
-                                        {/* user property name */}
-                                        <p>{propName}</p>
-                                    </div>)
-                            })}
-                        </ButtonGroup>
+                        {/* Use horizontal list buttons  */}
+                        {/* conditional rendering for buttons */}
+
+                        <div className="switch-basics-example button-group-stack-example">
+                            <ButtonGroup stackFor={Breakpoints.SMALL}>
+                                {assessments.map((item) => {
+                                    let propName = Object.keys(item)
+                                    let propVal = Object.values(item)
+                                    return (
+                                        <div className="grid-basics-example">
+                                            <Switch
+                                                onChange={this.handleSwitch}
+                                                key={propName}
+                                                input={{ name: propName, value: propVal }}
+                                                active={{ text: 'Yes' }}
+                                                inactive={{ text: 'No' }}
+                                            />
+                                            {/* user property name */}
+                                            <p>{propName}</p>
+                                        </div>)
+                                })}
+                            </ButtonGroup>
+                        </div>
+
+                        <div className="button-small expanded">
+                            <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment}>Submit Survey</Button>
+                        </div>
+
                     </div>
+                </div >
+            )
 
-                    <div className="button-small expanded">
-                        <Button isExpanded data-levelid={this.props.levelId} onClick={this.handleClick}>Submit Survey</Button>
-                    </div>
+        } else if (condition === "normal" || condition === "caution" || condition === "critical") {
+            return (
+                <Status
+                    level={this.props.level}
+                    levelId={this.props.levelId}
+                    riskAssessmentResult={condition}
+                />
+            )
 
-                </div>
-            </div >
-        )
-
-        // } else if (condition === "normal" || condition === "caution" || condition === "critical") {
-        //     return (
-        //         <Status
-        //             level={this.props.level}
-        //             levelId={this.props.levelId}
-        //             riskAssessmentResult={condition}
-        //         />
-        //     )
-
-        // }
+        }
 
     }
 }
