@@ -173,8 +173,13 @@ class List extends Component {
                         <div className="button-small expanded">
                             <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment}>Submit Survey</Button>
                         </div>
-
+                
                     </div>
+                    <div className="d-flex flex-sm-row justify-content-center">
+                <div className="p-2">
+                    <Link to="/" className="titlepage">HOME</Link>
+                </div>
+            </div>
                 </div >
             )
         } else if (condition === "normal" || condition === "caution" || condition === "critical") {
