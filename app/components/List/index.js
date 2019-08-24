@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation';
 import API from "../utils/API";
 import Status from "../Status";
-import { Link } from 'react-router-dom';
+
+// import './list.css'
 
 const assessments = [
     { extinguisher: false },
@@ -41,7 +42,7 @@ class List extends Component {
         // sum of riskScore
         const { extinguisher, alarms, detection, riser, egress, riskScore } = this.state
 
-        let score = []
+        let score = [0];
 
         extinguisher ? score.push(10) : null;
         alarms ? score.push(20) : null;
@@ -141,6 +142,7 @@ class List extends Component {
         if (condition === "") {
 
             return (
+            
                 <div className="container">
                     {/* use a button to that changes color upon onclick */}
                     {/* use helper function to calculate the risk value (1-100) */}
@@ -172,16 +174,14 @@ class List extends Component {
                         </div>
 
                         <div className="button-small expanded">
-                            <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment}>Submit Survey</Button>
+                            <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment} className="submit">Submit Survey</Button>
                         </div>
                 
                     </div>
-                    <div className="d-flex flex-sm-row justify-content-center">
-                <div className="p-2">
-                    <Link to="/" className="titlepage">HOME</Link>
-                </div>
-            </div>
+                    
                 </div >
+                
+             
             )
         } else if (condition === "normal" || condition === "caution" || condition === "critical") {
             return (

@@ -1,0 +1,11 @@
+
+
+.submit {
+    font-weight: bold;
+    background-color: #00AACD;
+    display: block;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 25px;
+}

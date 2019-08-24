@@ -1,0 +1,9 @@
+.home {
+    display: in-line block;
+    padding: 15px;
+    background-color: #4BA0A5;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 20px
+}
