@@ -27,9 +27,8 @@ class List extends Component {
         };
         this.handleSwitch = this.handleSwitch.bind(this);
         this.scoreLogic = this.scoreLogic.bind(this);
-        this.handleClick = this.handleClick.bind(this)
         this.conditionAssessment = this.conditionAssessment.bind(this)
-        this.submitAssessment - this.submitAssessment.bind(this)
+        this.submitAssessment = this.submitAssessment.bind(this)
     }
 
     // componentDidUpdate() {
@@ -128,7 +127,7 @@ class List extends Component {
                     })
                     .then(res => {
                         // console.log(res)
-                        this.setState({ condition: "critical" })
+                        this.setState({ condition: this.state.condition })
                     })
                     .catch(err => console.log(err))
             })
@@ -178,7 +177,6 @@ class List extends Component {
                     </div>
                 </div >
             )
-
         } else if (condition === "normal" || condition === "caution" || condition === "critical") {
             return (
                 <Status
