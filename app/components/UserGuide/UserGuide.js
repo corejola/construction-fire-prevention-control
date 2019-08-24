@@ -6,10 +6,10 @@ import './UserGuide.css'
 const UserGuide = props => {
     return (
         <div className="container">
-            <div className="d-flex flex-lg-row justify-content-center">
+            <div className="d-flex flex-sm-row justify-content-center">
                 <img className="p-2 brandName" src={require("../../../branding/Lendlease_Corporate_BrandName_RGB.png")} />
             </div>
-            <div className="d-flex flex-lg-row justify-content-center">
+            <div className="d-flex flex-sm-row justify-content-center">
                 <div className="p-2 paragraph">
                     <h3> How to use the app.</h3>
 
@@ -27,7 +27,7 @@ const UserGuide = props => {
             </div> */}
             <div className="d-flex flex-lg-row justify-content-center">
                 <div className="p-2">
-                    <Link to="/" className="GoBackButton">Home</Link>
+                    <Link to="/" className="titlepage">Home</Link>
                 </div>
             </div>
         </div >

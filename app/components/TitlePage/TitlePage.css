@@ -12,7 +12,7 @@
     color: white;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #008080;
+    background-color: #4BA0A5;
     margin-bottom: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -30,9 +30,9 @@
     color: white;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #008080;
+    background-color: #4BA0A5;
     margin-bottom: 15px;
-    padding: 10px 200px;
+    padding: 10px 100px;
     font-size: 20px;
     font-weight: bold;
     border-radius: 8px;
@@ -47,7 +47,7 @@
     color: white;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #008080;
+    background-color: #4BA0A5;
     margin-bottom: 15px;
     padding: 10px 115px;
     font-size: 20px;
@@ -63,7 +63,7 @@
     color: white;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #008080;
+    background-color: #4BA0A5;
     margin-bottom: 15px;
     padding: 10px 115px;
     font-size: 20px;
@@ -73,13 +73,14 @@
     /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
   }
 
-  .LogOutButton {
+  .logout {
     padding: 15px;
-    background-color: red;
-    color: white;
+    background-color: #91F00A;
+    color: #00AACD;
     font-weight: bold;
     border-radius: 6px;
-    font-size: 30px;
+    font-size: 15px;
     text-align: center;
-    display: block;
+    display: inline-block;
+    margin-left: 15px;
   }
