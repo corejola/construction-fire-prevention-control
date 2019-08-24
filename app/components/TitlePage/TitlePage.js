@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import { Button } from 'react-foundation';
+>>>>>>> master
 import Weather from '../Weather/Weather';
 
 import './TitlePage.css'
@@ -49,7 +53,7 @@ const TitlePage = props => {
                 </div>
                 <div className="d-flex flex-sm-row justify-content-center">
                     <div className="p-2">
-                        <Link to="/" className="assessment">CURRENT FIRE RISK ASSESSMENT</Link>
+                        <Link to="/assessment/results" className="assessment">CURRENT FIRE RISK ASSESSMENT</Link>
                     </div>
                 </div>
                 <div className="d-flex flex-sm-row justify-content-center">
@@ -65,7 +69,7 @@ const TitlePage = props => {
             </div>
             <div className="d-flex flex-sm-row justify-content-center">
                 <div className="p-2">
-                    <Link to="/login" className="logout">Log Out</Link>
+                    <Button to="/login" className="logout">Log Out</Link>
                 </div>
             </div>
         </div>
