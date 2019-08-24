@@ -53,6 +53,7 @@
     "react-foundation": "^0.9.6",
     "react-router-dom": "^5.0.1",
     "save": "^2.4.0",
+    "d3": "^5.10.0",
     "webpack-cli": "^3.3.6"
   }
 }

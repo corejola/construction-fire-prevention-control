@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-foundation'
+import { Button } from 'react-foundation';
 import Weather from '../Weather/Weather';
 
 import './TitlePage.css'
@@ -50,7 +50,7 @@ const TitlePage = props => {
                 </div>
                 <div className="d-flex flex-lg-row justify-content-center">
                     <div className="p-2">
-                        <Link to="/" className="assessment">CURRENT FIRE RISK ASSESSMENT</Link>
+                        <Link to="/assessment/results" className="assessment">CURRENT FIRE RISK ASSESSMENT</Link>
                     </div>
                 </div>
                 <div className="d-flex flex-lg-row justify-content-center">

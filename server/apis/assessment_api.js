@@ -29,6 +29,13 @@ module.exports = {
             })
             .then((dbLevel) => res.json(dbLevel))
             .catch((err) => res.json(err));
+    },
+
+    currentAssessment: (req, res) => {
+        db.Level.find({})
+            .populate("riskAssessments")
+            .then(dbLevel => res.json(dbLevel))
+            .catch((err) => { res.json(err) })
     }
 
 };

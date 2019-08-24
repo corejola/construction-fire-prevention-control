@@ -1,12 +1,12 @@
   .paragraph {
     margin: 10px;
- }
+  }
 
- .brandName {
-   margin-bottom: 15px;
- }
- 
-  .tower3, .tower2,.tower1 {
+  .brandName {
+    margin-bottom: 15px;
+  }
+
+  .tower3, .tower2, .tower1 {
     /* border: 1px solid #3079ed; */
     border: 0px;
     color: white;
@@ -83,4 +83,3 @@
     text-align: center;
     display: block;
   }
-
