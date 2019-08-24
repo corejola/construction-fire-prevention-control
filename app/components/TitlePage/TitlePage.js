@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-foundation'
 import Weather from '../Weather/Weather';
 
 import './TitlePage.css'
@@ -41,20 +42,20 @@ const TitlePage = props => {
                 </div>
                 <div className="d-flex flex-lg-row justify-content-center">
                     <div className="p-2">
-                        <Link to="#" className="tower3">TOWER 3 (TBD)</Link>
+                        <Link to="/" className="tower3">TOWER 3 (TBD)</Link>
                     </div>
                     <div className="p-2">
-                        <Link to="#" className="podium">RETAIL PODIUM (TBD)</Link>
-                    </div>
-                </div>
-                <div className="d-flex flex-lg-row justify-content-center">
-                    <div className="p-2">
-                        <Link to="#" className="assessment">CURRENT FIRE RISK ASSESSMENT</Link>
+                        <Link to="/" className="podium">RETAIL PODIUM (TBD)</Link>
                     </div>
                 </div>
                 <div className="d-flex flex-lg-row justify-content-center">
                     <div className="p-2">
-                        <Link to="#" className="trending">FIRE RISK ASSESSMENT TRENDING</Link>
+                        <Link to="/" className="assessment">CURRENT FIRE RISK ASSESSMENT</Link>
+                    </div>
+                </div>
+                <div className="d-flex flex-lg-row justify-content-center">
+                    <div className="p-2">
+                        <Link to="/" className="trending">FIRE RISK ASSESSMENT TRENDING</Link>
                     </div>
                 </div>
                 {/* <div className="d-flex flex-lg-row justify-content-center">
@@ -65,7 +66,7 @@ const TitlePage = props => {
             </div>
             <div className="d-flex flex-lg-row justify-content-center">
                 <div className="p-2">
-                    <Link onClick={props.logout} className="LogOutButton">LogOut</Link>
+                    <Button onClick={props.logout} className="LogOutButton">LogOut</Button>
                 </div>
             </div>
         </div>
