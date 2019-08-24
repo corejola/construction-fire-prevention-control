@@ -1,7 +1,7 @@
 import React from "react";
 import * as d3 from "d3";
 import "./style.css"
-// import database from "../../data/database.json"
+import database from "../../data/database.json";
 import API from "../utils/API"
 import { Button } from 'react-foundation'
 
@@ -107,9 +107,23 @@ class Results extends React.Component {
         };
         this.handleClick = this.handleClick.bind(this);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        this.test = this.test.bind(this);
+    }
+
+    test() {
+
+        API.viewRiskAssessment()
+            .then(res => {
+                // return res.data[0].levels
+                return console.log(res.data);
+            })
+            .catch(err => console.log(err))
+
     }
 
     componentDidMount() {
+
+        this.test();
 
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
