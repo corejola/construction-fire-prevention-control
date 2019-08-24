@@ -9,14 +9,17 @@ import { Button } from 'react-foundation'
 //---------- CONVERT DATASET ----------//
 const dataset = [];
 for (var score in database) {
-    dataset.push(database[score].score)
-    console.log(database[score].score)
+    if (score === "") {
+        score = "-"
+    }
+    dataset.push(database[score].riskAssessementResult)
+    console.log(database[score].riskAssessementResult)
 };
 
 //---------- FLOOR NUMBERS ----------//
 const floors = [];
 for (var floor in database) {
-    floors.push(database[floor].level)
+    floors.push(database[floor].levelNumber)
 };
 
 console.log(dataset.length)
@@ -38,25 +41,29 @@ let data = [];
 let red = 0;
 let yellow = 0;
 let green = 0;
+let gray = 0;
 
 
 for (let i = 0; i < dataset.length; i++) {
-    if (dataset[i] >= 67) {
-        red++
+    if (dataset[i] === "critical") {
+        red++;
     }
-    else if (dataset[i] >= 34 && dataset[i] < 66) {
-        yellow++
+    else if (dataset[i] === "caution") {
+        yellow++;
 
     }
-    else if (dataset[i] < 33) {
-        green++
+    else if (dataset[i] === "normal") {
+        green++;
+    }
+    else if (dataset[i] === "-") {
+        gray++;
     }
 
 }
 data.push(red);
 data.push(yellow);
 data.push(green);
-
+data.push(gray);
 
 const styles = {
     holder: {
@@ -104,6 +111,7 @@ class Results extends React.Component {
         this.state = {
             display: true,
             width: window.innerWidth,
+            database: []
         };
         this.handleClick = this.handleClick.bind(this);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -127,19 +135,21 @@ class Results extends React.Component {
             .append("rect")
             .attr("x", 100)
             .attr("y", (d, i) => bh - ((i + 1) * 10))
-            // .attr("y", (d, i) => bh - ((i + 1) * 30))
             .attr("class", "barG")
             .attr("width", 215)
             .attr("height", 7)
             .attr("fill", (d) => {
-                if (d < 33) {
+                if (d === "normal") {
                     return "#7D8F29"
                 }
-                else if (d >= 34 && d < 66) {
+                else if (d === "caution") {
                     return "#FDCA44"
                 }
-                else if (d >= 67) {
+                else if (d === "critical") {
                     return "#AA0830"
+                }
+                else if (d === "-") {
+                    return "#D0CECE"
                 }
             })
             .on("mouseenter", function (d) {
@@ -170,7 +180,7 @@ class Results extends React.Component {
 
         const color = d3.scaleOrdinal()
             // .domain([red, yellow, green])
-            .range(["#AA0830", "#FDCA44", "#7D8F29"]);
+            .range(["#AA0830", "#FDCA44", "#7D8F29", "#D0CECE"]);
 
         const pieC = d3.select(".pie-chart")
             .append("svg")
