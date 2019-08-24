@@ -310,5 +310,5 @@ class Tower extends React.Component {
 
 };
 
-export default Tower;
+export default Results;
 

@@ -8,11 +8,12 @@ import Main from "./Main";
 import Login from "./Login";
 import Signup from "./Signup";
 import axios from 'axios';
-import Assessment from "./Assessment/index";
+import Assessment from "./Assessment";
 import TitlePage from './TitlePage/TitlePage';
 import UserGuide from './UserGuide/UserGuide';
 import PrivateRoute from "./utils/PrivateRoute";
 import Weather from './Weather/Weather';
+import Results from "./Results/";
 
 export default class MainRouter extends Component {
   constructor(props) {
@@ -97,6 +98,7 @@ export default class MainRouter extends Component {
           <Route strict exact path="/weather" component={Weather}
           />
           <Route strict exact path="/assessment" component={Assessment} />
+          <Route strict exact path="/results" component={Results} />
         </Switch>
       </Router>
     );
