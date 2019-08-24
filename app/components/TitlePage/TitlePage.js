@@ -14,7 +14,13 @@ const TitlePage = props => {
             <Weather />
             <div className="d-flex flex-lg-row justify-content-center">
                 <div className="p-2 paragraph">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h1> Construction Fire: Prevention &#38; Control</h1>
+                    <hr />
+                    <h3>PROBLEM :</h3>
+                    <h5>Proactive fire prevention – to help teams assess fire risk for the lifecycle of a project.</h5>
+
+                    <h3>IDEA:</h3>
+                    <h5>Create catalogue/data set of various risks associated with all activities (high and low risk); construction schedule that will be a baseline to feed into a digital application. This will be part of an AI/ML pursuit in that the data will feed into a selected app and which will create a smart dashboard and provide insights to the project teams.</h5>
                 </div>
             </div>
             <div className="container">
@@ -69,7 +75,7 @@ const TitlePage = props => {
                     <Button onClick={props.logout} className="LogOutButton">LogOut</Button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
