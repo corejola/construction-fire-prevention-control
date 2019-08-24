@@ -2,6 +2,7 @@ import React from "react";
 import * as d3 from "d3";
 import "./style.css"
 import database from "../../data/database.json"
+import { Button } from 'react-foundation'
 
 
 //---------- CONVERT DATASET ----------//
@@ -96,7 +97,7 @@ const small = {
 };
 
 
-class Tower extends React.Component {
+class Results extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -240,7 +241,7 @@ class Tower extends React.Component {
                         <h1>Tower Readiness Results</h1>
 
                         <p className="description"><strong>ABOUT THE VISUALIZATIONS: </strong>The following visualization aggregates the tower's evaluation data. After evaluating the current state of each floor, calculations are conducted on the back-end to determine if a floor is in a good or normal safety status, <strong>green</strong>, a caution safety status, <strong>yellow</strong>,or a critical  status, <strong>red</strong>. Hover over each floor to see the final score. Notice if certain floors continue to evaluate to a severe safety rating. <br /> <br />              Reference the pie chart below to see the percentage of floors that are in each category: normal, caution, critical.</p>
-                        <button onClick={this.handleClick}>More Details</button>
+                        <Button onClick={this.handleClick}>More Details</Button>
 
                     </div >
 
