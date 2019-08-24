@@ -21,68 +21,95 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
+
             riskScore: 0,
-            riskAssessment: ""
-            // risk assessment can be a function of the sum of the values of each item in the state
-        }
-        this.handleSwitch = this.handleSwitch.bind(this)
+            condition: ""
+        };
+        this.handleSwitch = this.handleSwitch.bind(this);
+        this.scoreLogic = this.scoreLogic.bind(this);
+        this.conditionAssessment = this.conditionAssessment.bind(this)
         this.submitAssessment = this.submitAssessment.bind(this)
     }
 
-    componentDidUpdate() {
-        console.log(this.state)
-    };
+    // componentDidUpdate() {
+    //     console.log(`RiskScore ${this.state.riskScore}, condition ${this.state.condition}`)
+    //     console.log(this.state)
+    // }
 
     scoreLogic() {
-        // code to assess the fire risk level based on the state of the level.
-        // loop throught the this.state.assessment object (.map or forEach)
-        // .push into this.state.riskScore
         // sum of riskScore
-        // if risk score is <33 = Normal/Green
-        // if risk score is >34 && <67 = Caution/Yellow
-        // if risk score is > 68 = Critial/Red
-        const { extinguisher, alarms, detection, riser, egress } = this.state
-        let score = []
-        if (extinguisher === true) { }
-        if (alarms === true) { }
-        if (detection === true) { }
-        if (riser === true) { }
-        if (egress === true) {
+        const { extinguisher, alarms, detection, riser, egress, riskScore } = this.state
 
+        let score = []
+
+        extinguisher ? score.push(10) : null;
+        alarms ? score.push(20) : null;
+        detection ? score.push(20) : null;
+        riser ? score.push(20) : null;
+        egress ? score.push(30) : null;
+
+        let sum = score.reduce((a, b) => a + b)
+
+        this.setState({ riskScore: sum },
+            () => {
+                console.log(riskScore)
+                this.conditionAssessment()
+            })
+    }
+
+    conditionAssessment() {
+        const { riskScore, condition } = this.state
+        if (riskScore > 67) {
+            this.setState({
+                condition: "normal"
+            }, () => { console.log(condition) })
+        }
+        if (riskScore > 34 && riskScore < 66) {
+            this.setState({
+                condition: "caution"
+            }, () => { console.log(condition) })
+        }
+        if (riskScore < 33) {
+            this.setState({
+                condition: "critical"
+            },
+                () => { console.log(condition) })
         }
     };
 
     // submitAssessment function that changes the state of the 
     handleSwitch() {
-        const { name } = event.target
-        console.log(`Name: ${name}`)
 
+        const { name } = event.target
+        const { extinguisher, alarms, detection, riser, egress } = this.state
         switch (name) {
             case 'extinguisher':
-                this.setState({ extinguisher: !this.state.extinguisher })
+                this.setState({ extinguisher: !extinguisher }, () => { console.log(extinguisher) });
                 break;
             case 'alarms':
-                this.setState({ alarms: !this.state.alarms })
+                this.setState({ alarms: !alarms }, () => { console.log(alarms) })
                 break;
             case 'detection':
-                this.setState({ detection: !this.state.detection })
+                this.setState({ detection: !detection }, () => { console.log(detection) })
                 break;
             case 'riser':
-                this.setState({ riser: !this.state.riser })
+                this.setState({ riser: !riser }, () => { console.log(riser) })
                 break;
             case 'egress':
-                this.setState({ egress: !this.state.egress })
+                this.setState({ egress: !egress }, () => { console.log(egress) })
                 break;
         }
     };
 
     submitAssessment() {
+        // calculates the logic based on current state & updates mongoose
+        this.scoreLogic()
 
         API.getUser()
 
             .then(res => {
 
-                console.log(res.data)
+                // console.log(res.data)
 
                 API.saveAssessment(
 
@@ -93,14 +120,14 @@ class List extends Component {
                         smokeFireAlarms: this.state.alarms,
                         fireRisers: this.state.riser,
                         emergencyEgress: this.state.egress,
-                        riskAssessmentResult: this.state.riskAssessment,
+                        riskAssessmentResult: this.state.condition,
                         assessmentDate: new Date(),
                         user: res.data._id
 
                     })
                     .then(res => {
-                        console.log(res)
-                        this.setState({ riskAssessment: "critical" })
+                        // console.log(res)
+                        this.setState({ condition: this.state.condition })
                     })
                     .catch(err => console.log(err))
             })
@@ -108,9 +135,9 @@ class List extends Component {
     };
 
     render() {
-        const { riskAssessment } = this.state
+        const { condition } = this.state
 
-        if (riskAssessment === "") {
+        if (condition === "") {
 
             return (
                 <div className="container">
@@ -118,6 +145,7 @@ class List extends Component {
                     {/* use helper function to calculate the risk value (1-100) */}
                     <div className="fieldset">
                         <h3>LEVEL {this.props.level}</h3>
+
                         {/* Use horizontal list buttons  */}
                         {/* conditional rendering for buttons */}
 
@@ -149,13 +177,12 @@ class List extends Component {
                     </div>
                 </div >
             )
-
-        } else if (riskAssessment === "normal" || riskAssessment === "caution" || riskAssessment === "critical") {
+        } else if (condition === "normal" || condition === "caution" || condition === "critical") {
             return (
                 <Status
                     level={this.props.level}
                     levelId={this.props.levelId}
-                    riskAssessmentResult={riskAssessment}
+                    riskAssessmentResult={condition}
                 />
             )
 
