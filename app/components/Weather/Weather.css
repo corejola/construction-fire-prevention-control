@@ -1,11 +1,23 @@
 
 .buttonGet {
-    color: white;
-    background: limegreen;
+    color: #00AACD;
+    background: #91F00A;
     font-weight: bold;
     padding: 10px;
     border-radius: 4px;
 }
+
+.logout {
+    padding: 15px;
+    background-color:#91F00A;
+    color: #00AACD;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 15px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 15px;
+  }
 
 .buttonSearch {
     color: white;

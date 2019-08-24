@@ -9,9 +9,9 @@
  .risk {
    margin-bottom: 50px;
  }
- .GoBackButton {
-  padding: 20px;
-  background-color: red;
+ .titlepage {
+  padding: 15px;
+  background-color: #4BA0A5;
   color: white;
   font-weight: bold;
   border-radius: 6px;
