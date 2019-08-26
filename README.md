@@ -22,12 +22,17 @@ Proposal  - mobile application to help field team accurately assess fire related
 * Visual output to be displayed on site screens and emailed to project team
 * Origination of trend tracking fire related incidents w/ effectiveness of controls. 
 
+### About the Application
+
+The Lendlease Construction Fire: Prevent Control is a **MERN** application utilizing **MVC** architecture. It is a mobile responsive application w/ user authentication that is maintained acrross the application using JWT. The application utilizes a series of switches to document onsite field conditions to determine fire risk assessment. MVP test build for Oceanwide Plaza Project Tower 1.
+
 ### How it Works:
 1. Log into the application.
 2. Select Tower to review.
 3. Walk the level to observe the current field conditions as the relate to the presence of fire extinguishers, smoke/fire alarms, smoke/fire detetion, fire risers & a clear path of egress.
 4. Tag the item on the level you are on and click submit
 5. The app will determine the current fire risk condition for that level.
+6. You can see the overall condition of the tower per floor by going to the current fire risk assessment tab. Visualization of the current status of the entire tower is used using [D3.js](https://d3js.org/), 
 
 ### Fire Risk Condition
 The fire risk condition is determined by a simple scoring system. Each of the inputs has a specific score and the sum of those scores determines the condition. The base conditions are:
@@ -38,9 +43,8 @@ The fire risk condition is determined by a simple scoring system. Each of the in
 
 ![DEMO](branding/demo.gif)
 
-### About the Application
-
-The Lendlease Construction Fire: Prevent Control is a **MERN** application utilizing **MVC** architecture. It is a mobile responsive application w/ user authentication that is maintained acrross the application using JWT. The application utilizes a series of switches to document onsite field conditions to determine fire risk assessment. MVP test build for Oceanwide Plaza Project Tower 1.
+### Current Fire Risk Assessment
+![FireRiskAssessment](branding/FireRiskAssessmentD3.PNG)
  
 ### Project Wirerame
 ![WIREFRAME](branding/MVP_WireFrame.png)
