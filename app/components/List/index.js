@@ -153,12 +153,12 @@ class List extends Component {
                         {/* conditional rendering for buttons */}
 
                         <div className="switch-basics-example button-group-stack-example menu align-center expanded text-center" >
-                            <ButtonGroup stackFor={Breakpoints.SMALL}>
+                            <ButtonGroup className="menu expanded" stackFor={Breakpoints.SMALL}>
                                 {assessments.map((item) => {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <div className="grid-basics-example menu vertical">
+                                        <div className="grid-basics-example menu expanded vertical">
                                             <Switch
                                                 onChange={this.handleSwitch}
                                                 key={propName}
