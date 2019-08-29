@@ -4,7 +4,7 @@ import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-fou
 import API from "../utils/API";
 import Status from "../Status";
 
-// import './list.css'
+import './style.css'
 
 const assessments = [
     { extinguisher: false },
@@ -152,13 +152,13 @@ class List extends Component {
                         {/* Use horizontal list buttons  */}
                         {/* conditional rendering for buttons */}
 
-                        <div className="switch-basics-example button-group-stack-example">
+                        <div className="switch-basics-example button-group-stack-example menu align-center expanded text-center" >
                             <ButtonGroup stackFor={Breakpoints.SMALL}>
                                 {assessments.map((item) => {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <div className="grid-basics-example">
+                                        <div className="grid-basics-example menu vertical">
                                             <Switch
                                                 onChange={this.handleSwitch}
                                                 key={propName}
