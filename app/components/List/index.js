@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation';
+import { Button, Switch, ButtonGroup, Breakpoints, Menu } from 'react-foundation';
 import API from "../utils/API";
 import Status from "../Status";
 
@@ -158,7 +158,7 @@ class List extends Component {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <div className="grid-basics-example menu expanded vertical">
+                                        <Menu expanded="true" className="grid-basics-example menu expanded vertical">
                                             <Switch
                                                 onChange={this.handleSwitch}
                                                 key={propName}
@@ -168,7 +168,7 @@ class List extends Component {
                                             />
                                             {/* user property name */}
                                             <p>{propName}</p>
-                                        </div>)
+                                        </Menu>)
                                 })}
                             </ButtonGroup>
                         </div>
