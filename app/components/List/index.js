@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints, Menu } from 'react-foundation';
+import { Button, Switch, ButtonGroup, Breakpoints, Menu, MenuItem } from 'react-foundation';
 import API from "../utils/API";
 import Status from "../Status";
 
@@ -23,7 +23,6 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
-
             riskScore: 0,
             condition: ""
         };
@@ -158,16 +157,18 @@ class List extends Component {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <Menu expanded="true" className="grid-basics-example menu expanded vertical">
-                                            <Switch
-                                                onChange={this.handleSwitch}
-                                                key={propName}
-                                                input={{ name: propName, value: propVal }}
-                                                active={{ text: 'Yes' }}
-                                                inactive={{ text: 'No' }}
-                                            />
+                                        <Menu className="grid-basics-example expanded vertical">
+                                            <MenuItem>
+                                                <Switch
+                                                    onChange={this.handleSwitch}
+                                                    key={propName}
+                                                    input={{ name: propName, value: propVal }}
+                                                    active={{ text: 'Yes' }}
+                                                    inactive={{ text: 'No' }}
+                                                />
+                                            </MenuItem>
                                             {/* user property name */}
-                                            <p>{propName}</p>
+                                            <MenuItem>{propName}</MenuItem>
                                         </Menu>)
                                 })}
                             </ButtonGroup>
