@@ -157,7 +157,7 @@ class List extends Component {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <Menu className="grid-basics-example vertical toggle">
+                                        <Menu className="grid-basics-example vertical">
                                             <MenuItem>
                                                 <Switch
                                                     onChange={this.handleSwitch}

@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.toggle{
-    /* background-color: #00AACD; */
-    padding: 5px;
-}
+.assessment {
+    display: flex;
+    justify-content: space-between;
+  }
