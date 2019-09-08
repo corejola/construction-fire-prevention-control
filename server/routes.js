@@ -19,7 +19,7 @@ module.exports = function (app) {
 	app.use('/apis/towers', towers);
 	app.use('/apis/levels', levels);
 	app.use('/apis/surveyRiskAssessments', surveyRiskAssessments);
-	app.use('/assessment', surveyRiskAssessments);
+	app.use('/assessment', application);
 	app.use('/userguide', application);
 	app.use('/', application);
 

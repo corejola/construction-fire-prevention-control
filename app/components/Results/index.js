@@ -1,70 +1,17 @@
 import React from "react";
 import * as d3 from "d3";
 import "./style.css"
-import database from "../../data/database.json";
+// import database from "../../data/database.json";
 import API from "../utils/API"
 import { Button } from 'react-foundation'
 
-const database = () => {
-    API.viewRiskAssessment()
-        .then(res => {
-            // return res.data[0].levels
-            return res.data;
-        })
-        .catch(err => console.log(err))
-};
-
-//---------- CONVERT DATASET ----------//
-const dataset = [];
-for (var score in database) {
-    dataset.push(database[score].score)
-    console.log(database[score].score)
-};
-
-//---------- FLOOR NUMBERS ----------//
-const floors = [];
-for (var floor in database) {
-    floors.push(database[floor].level)
-};
-
-console.log(dataset.length)
+// //---------- BAR CHART VARIABLES ----------//
 const bw = 400;
 const bh = 555;
-// const padding = 10;
-
-//---------- BAR CHART VARIABLES ----------//
-
 const pw = 400;
 const ph = 400;
 const margin = 40;
 const radius = Math.min(pw, ph) / 2 - margin;
-
-
-//---------- PIE CHART VARIABLES ----------//
-let data = [];
-
-let red = 0;
-let yellow = 0;
-let green = 0;
-
-
-for (let i = 0; i < dataset.length; i++) {
-    if (dataset[i] >= 67) {
-        red++
-    }
-    else if (dataset[i] >= 34 && dataset[i] < 66) {
-        yellow++
-
-    }
-    else if (dataset[i] < 33) {
-        green++
-    }
-
-}
-data.push(red);
-data.push(yellow);
-data.push(green);
-
 
 const styles = {
     holder: {
@@ -112,127 +59,173 @@ class Results extends React.Component {
         this.state = {
             display: true,
             width: window.innerWidth,
+            levels: [],
+            dataset: [],
+            data: [],
+            red: 0,
+            yellow: 0,
+            green: 0
         };
         this.handleClick = this.handleClick.bind(this);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.test = this.test.bind(this);
-    }
-
-    test() {
-
-        API.viewRiskAssessment()
-            .then(res => {
-                // return res.data[0].levels
-                return console.log(res.data);
-            })
-            .catch(err => console.log(err))
-
     }
 
     componentDidMount() {
 
-        this.test();
+        API.getRiskAssessment()
 
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);
-        //---------- BAR CHART ----------//
+            .then(res => {
+                console.log(res.data);
 
-        const svg = d3.select(".my-barGraph")
-            .append("svg")
-            .attr("width", bw)
-            .attr("height", bh)
-            .attr("class", "holder");
+                for (var floor in res.data) {
+                    this.setState({ levels: [...this.state.levels, res.data[floor].levelNumber] })
+                };
 
-        svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("x", 100)
-            .attr("y", (d, i) => bh - ((i + 1) * 10))
-            // .attr("y", (d, i) => bh - ((i + 1) * 30))
-            .attr("class", "barG")
-            .attr("width", 215)
-            .attr("height", 7)
-            .attr("fill", (d) => {
-                if (d < 33) {
-                    return "#7D8F29"
+
+                // //---------- CONVERT DATASET ----------//
+
+                for (var score in res.data) {
+
+                    const assessments = res.data[score].riskAssessments.flat()
+
+                    const mostRecentDate = new Date(Math.max.apply(null, assessments.map(e => {
+                        return new Date(e.assessmentDate);
+                    })));
+
+                    const mostRecentObj = assessments.filter(e => {
+                        var d = new Date(e.assessmentDate);
+                        return d.getTime() === mostRecentDate.getTime();
+                    })[0];
+
+                    const currentAssessment = mostRecentObj.riskAssessmentResult
+
+                    this.setState({ dataset: [...this.state.dataset, currentAssessment] })
+
+                };
+
+                console.log(this.state.dataset);
+
+                for (let i = 0; i < this.state.dataset.length; i++) {
+                    if (this.state.dataset[i] === "critical") {
+                        this.state.red++
+                    }
+                    else if (this.state.dataset[i] === "caution") {
+                        this.state.yellow++
+
+                    }
+                    else if (this.state.dataset[i] === "normal") {
+                        this.state.green++
+                    }
+
                 }
-                else if (d >= 34 && d < 66) {
-                    return "#FDCA44"
-                }
-                else if (d >= 67) {
-                    return "#AA0830"
-                }
+
+                this.setState({ data: [...this.state.data, ...[this.state.red, this.state.yellow, this.state.green]] })
+
+                console.log(this.state.data);
+
+                this.updateWindowDimensions();
+                window.addEventListener('resize', this.updateWindowDimensions);
+
+                //---------- BAR CHART ----------//
+                const svg = d3.select(".my-barGraph")
+                    .append("svg")
+                    .attr("width", bw)
+                    .attr("height", bh)
+                    .attr("class", "holder");
+
+                svg.selectAll("rect")
+                    .data(this.state.dataset)
+                    .enter()
+                    .append("rect")
+                    .attr("x", 100)
+                    .attr("y", (d, i) => bh - ((i + 1) * 10))
+                    // .attr("y", (d, i) => bh - ((i + 1) * 30))
+                    .attr("class", "barG")
+                    .attr("width", 215)
+                    .attr("height", 7)
+                    .attr("fill", (d) => {
+                        if (d === "normal") {
+                            return "#7D8F29"
+                        }
+                        else if (d === "caution") {
+                            return "#FDCA44"
+                        }
+                        else if (d === "critical") {
+                            return "#AA0830"
+                        }
+                    })
+                    .on("mouseenter", function (d) {
+                        d3.select(this)
+                            .attr("stroke", "black")
+                            .transition()
+                            .duration(10)
+                            .attr("stroke-width", 6);
+                    })
+                    .on("mouseleave", function (d) {
+                        d3.select(this).transition()
+                            .attr("stroke", "none");
+                    })
+                    .append("svg:title")
+                    .text((d, i) => ("Floor score " + d))
+
+
+                svg.selectAll("text")
+                    .data(this.state.levels)
+                    .enter()
+                    .append("text")
+                    .text((d, i) => ("FLOOR " + d))
+                    .attr("x", 0)
+                    .attr("y", (d, i) => (bh - ((i + 1) * 10)) + 7)
+                    .attr("class", "labels");
+
+                //---------- PIE CHART ----------//
+
+                const color = d3.scaleOrdinal()
+                    // .domain([red, yellow, green])
+                    .range(["#AA0830", "#FDCA44", "#7D8F29"]);
+
+                const pieC = d3.select(".pie-chart")
+                    .append("svg")
+                    .attr("width", pw)
+                    .attr("height", ph)
+                    .append("g")
+                    .attr("transform", "translate(" + pw / 2 + "," + ph / 2 + ")");
+
+                const pie = d3.pie()
+                    .value((d) => { return d.value })
+
+                const data_ready = pie(d3.entries(this.state.data))
+
+
+                //---------- PIE CHART BUILD----------//
+
+                pieC.selectAll('pieSpace')
+                    .data(data_ready)
+                    .enter()
+                    .append('path')
+                    .attr('d', d3.arc()
+                        .innerRadius(0)
+                        .outerRadius(radius))
+                    .attr('fill', function (d) { return (color(d.data.key)) })
+                    .attr("stroke", "gray")
+                    .style("stroke-width", "1px")
+                    .style("opcity", 0.7)
+                    .on("mouseenter", function (d) {
+                        d3.select(this)
+                            .attr("stroke", "black")
+                            .transition()
+                            .duration(10)
+                            .attr("d", d3.arc().outerRadius(radius + 10).innerRadius(0))
+                            .attr("stroke-width", 6);
+                    })
+                    .on("mouseleave", function (d) {
+                        d3.select(this).transition()
+                            .attr("d", d3.arc().outerRadius(radius).innerRadius(0))
+                            .attr("stroke", "none");
+                    });
+
             })
-            .on("mouseenter", function (d) {
-                d3.select(this)
-                    .attr("stroke", "black")
-                    .transition()
-                    .duration(10)
-                    .attr("stroke-width", 6);
-            })
-            .on("mouseleave", function (d) {
-                d3.select(this).transition()
-                    .attr("stroke", "none");
-            })
-            .append("svg:title")
-            .text((d, i) => ("Floor score " + d))
-
-
-        svg.selectAll("text")
-            .data(floors)
-            .enter()
-            .append("text")
-            .text((d, i) => ("FLOOR " + d))
-            .attr("x", 0)
-            .attr("y", (d, i) => (bh - ((i + 1) * 10)) + 7)
-            .attr("class", "labels");
-
-        //---------- PIE CHART ----------//
-
-        const color = d3.scaleOrdinal()
-            // .domain([red, yellow, green])
-            .range(["#AA0830", "#FDCA44", "#7D8F29"]);
-
-        const pieC = d3.select(".pie-chart")
-            .append("svg")
-            .attr("width", pw)
-            .attr("height", ph)
-            .append("g")
-            .attr("transform", "translate(" + pw / 2 + "," + ph / 2 + ")");
-
-        const pie = d3.pie()
-            .value((d) => { return d.value })
-
-        const data_ready = pie(d3.entries(data))
-
-
-        //---------- PIE CHART BUILD----------//
-
-        pieC.selectAll('pieSpace')
-            .data(data_ready)
-            .enter()
-            .append('path')
-            .attr('d', d3.arc()
-                .innerRadius(0)
-                .outerRadius(radius))
-            .attr('fill', function (d) { return (color(d.data.key)) })
-            .attr("stroke", "gray")
-            .style("stroke-width", "1px")
-            .style("opcity", 0.7)
-            .on("mouseenter", function (d) {
-                d3.select(this)
-                    .attr("stroke", "black")
-                    .transition()
-                    .duration(10)
-                    .attr("d", d3.arc().outerRadius(radius + 10).innerRadius(0))
-                    .attr("stroke-width", 6);
-            })
-            .on("mouseleave", function (d) {
-                d3.select(this).transition()
-                    .attr("d", d3.arc().outerRadius(radius).innerRadius(0))
-                    .attr("stroke", "none");
-            });
+            .catch(err => console.log(err))
     };
 
     handleClick() {
@@ -276,9 +269,9 @@ class Results extends React.Component {
                     {/* <div className="data-labels" style={styles.data}> */}
                     <div className="data-labels" style={this.state.width < 1000 ? styles.holder : styles.data}>
 
-                        <p id="green">{`NORMAL: ${parseInt(green / dataset.length * 100)} %`}</p>
-                        <p id="yellow">{`CAUTION: ${parseInt(yellow / dataset.length * 100)} %`}</p>
-                        <p id="red">{`CRITICAL: ${parseInt(red / dataset.length * 100)} %`}</p>
+                        <p id="green">{`NORMAL: ${parseInt(this.state.green / this.state.dataset.length * 100)} %`}</p>
+                        <p id="yellow">{`CAUTION: ${parseInt(this.state.yellow / this.state.dataset.length * 100)} %`}</p>
+                        <p id="red">{`CRITICAL: ${parseInt(this.state.red / this.state.dataset.length * 100)} %`}</p>
 
                     </div>
 
@@ -298,7 +291,7 @@ class Results extends React.Component {
                         <h1>Tower Readiness Results</h1>
 
                         <p className="description"><strong>FLOORS IN CRITICAL CONDITION:</strong><br /><br />
-                            {`Total Floors:  ${red}`}
+                            {`Total Floors:  ${this.state.red}`}
                         </p>
                         <button onClick={this.handleClick}>Show Graph Descriptions</button>
 
@@ -312,9 +305,9 @@ class Results extends React.Component {
                     {/* <div className="data-labels" style={styles.data}> */}
                     <div className="data-labels" style={this.state.width < 1000 ? styles.holder : styles.data}>
 
-                        <p id="green">{`NORMAL: ${parseInt(green / dataset.length * 100)} %`}</p>
-                        <p id="yellow">{`CAUTION: ${parseInt(yellow / dataset.length * 100)} %`}</p>
-                        <p id="red">{`CRITICAL: ${parseInt(red / dataset.length * 100)} %`}</p>
+                        <p id="green">{`NORMAL: ${parseInt(this.state.green / this.state.dataset.length * 100)} %`}</p>
+                        <p id="yellow">{`CAUTION: ${parseInt(this.state.yellow / this.state.dataset.length * 100)} %`}</p>
+                        <p id="red">{`CRITICAL: ${parseInt(this.state.red / this.state.dataset.length * 100)} %`}</p>
 
                     </div>
 

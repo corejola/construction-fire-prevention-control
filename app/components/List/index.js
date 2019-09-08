@@ -40,7 +40,7 @@ class List extends Component {
         // sum of riskScore
         const { extinguisher, alarms, detection, riser, egress, riskScore } = this.state
 
-        let score = []
+        let score = [0]
 
         extinguisher ? score.push(10) : null;
         alarms ? score.push(20) : null;
