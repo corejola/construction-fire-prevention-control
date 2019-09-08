@@ -157,7 +157,7 @@ class List extends Component {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <Menu className="grid-basics-example expanded vertical">
+                                        <Menu className="grid-basics-example vertical toggle">
                                             <MenuItem>
                                                 <Switch
                                                     onChange={this.handleSwitch}
@@ -167,7 +167,6 @@ class List extends Component {
                                                     inactive={{ text: 'No' }}
                                                 />
                                             </MenuItem>
-                                            {/* user property name */}
                                             <MenuItem>{propName}</MenuItem>
                                         </Menu>)
                                 })}
