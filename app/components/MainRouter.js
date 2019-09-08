@@ -56,7 +56,7 @@ export default class MainRouter extends Component {
       <Router>
         <Switch>
           {/* <Route exact path="/" render={props =>
-            <Main
+            <TitlePage
               {...props}
               authenticate={this.authenticate}
               deAuthenticate={this.deAuthenticate}
