@@ -6,4 +6,6 @@ const authCheck = require("../config/middleware/authCheck");
 
 router.get('/', authCheck, tower_api.findAllTowers);
 
+// router.get('/', tower_api.findAllTowers);
+
 module.exports = router;
