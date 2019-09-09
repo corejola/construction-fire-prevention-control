@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.assessment {
+.spacing {
     display: flex;
     justify-content: space-between;
   }

@@ -157,18 +157,20 @@ class List extends Component {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <Menu className="grid-basics-example vertical">
-                                            <MenuItem>
-                                                <Switch
-                                                    onChange={this.handleSwitch}
-                                                    key={propName}
-                                                    input={{ name: propName, value: propVal }}
-                                                    active={{ text: 'Yes' }}
-                                                    inactive={{ text: 'No' }}
-                                                />
-                                            </MenuItem>
-                                            <MenuItem>{propName}</MenuItem>
-                                        </Menu>)
+                                        <div className="spacing">
+                                            <Menu className="grid-basics-example vertical">
+                                                <MenuItem>
+                                                    <Switch
+                                                        onChange={this.handleSwitch}
+                                                        key={propName}
+                                                        input={{ name: propName, value: propVal }}
+                                                        active={{ text: 'Yes' }}
+                                                        inactive={{ text: 'No' }}
+                                                    />
+                                                </MenuItem>
+                                                <MenuItem>{propName}</MenuItem>
+                                            </Menu>
+                                        </div>)
                                 })}
                             </ButtonGroup>
                         </div>

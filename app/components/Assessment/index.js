@@ -33,8 +33,10 @@ class Assessment extends Component {
     render() {
         const { tower, levels } = this.state
         return (
-            
+
             <div className="container">
+
+                {/* add a navbar */}
                 <div className="link">
                     <Link to="/" className="button">HOME</Link>
                 </div>
