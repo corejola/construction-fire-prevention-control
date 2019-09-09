@@ -7,7 +7,7 @@ import { Button } from 'react-foundation'
 
 // //---------- BAR CHART VARIABLES ----------//
 const bw = 400;
-const bh = 555;
+const bh = 570;
 const pw = 400;
 const ph = 400;
 const margin = 40;
@@ -48,8 +48,8 @@ const small = {
     "display": "flex",
     "flexDirection": "column",
     "alignItems": "center",
-    "justifyContent": "space-evenly",
-    "padding": "0 100px 0 100px"
+    "justifyContent": "space-around",
+    "padding": "0 150px 0 150px"
 };
 
 
@@ -141,7 +141,7 @@ class Results extends React.Component {
                     .attr("y", (d, i) => bh - ((i + 1) * 10))
                     // .attr("y", (d, i) => bh - ((i + 1) * 30))
                     .attr("class", "barG")
-                    .attr("width", 215)
+                    .attr("width", 200)
                     .attr("height", 7)
                     .attr("fill", (d) => {
                         if (d === "normal") {
