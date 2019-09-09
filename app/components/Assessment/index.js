@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from '../List';
 // import TowerLevels from './TowerLevels.json';
 import API from "../utils/API"
+// import Nav from "../children/Nav"
 import { Link } from 'react-router-dom';
 
 class Assessment extends Component {
@@ -35,7 +36,7 @@ class Assessment extends Component {
         return (
 
             <div className="container">
-
+                {/* <Nav /> */}
                 {/* add a navbar */}
                 <div className="link">
                     <Link to="/" className="button">HOME</Link>

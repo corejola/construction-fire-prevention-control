@@ -147,10 +147,8 @@ class List extends Component {
                     {/* use helper function to calculate the risk value (1-100) */}
                     <div className="fieldset">
                         <h3>LEVEL {this.props.level}</h3>
-
                         {/* Use horizontal list buttons  */}
                         {/* conditional rendering for buttons */}
-
                         <div className="switch-basics-example button-group-stack-example menu align-center expanded text-center" >
                             <ButtonGroup className="menu expanded" stackFor={Breakpoints.SMALL}>
                                 {assessments.map((item) => {
