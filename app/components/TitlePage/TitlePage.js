@@ -60,7 +60,7 @@ const TitlePage = props => {
                 </div>
                 <div className="d-flex flex-sm-row justify-content-center">
                     <div className="p-2">
-                        <Link to="/" className="trending">FIRE RISK ASSESSMENT TRENDING</Link>
+                        <Link to="/" className="trending">FIRE RISK ASSESSMENT TRENDING (TBD)</Link>
                     </div>
                 </div>
                 {/* <div className="d-flex flex-lg-row justify-content-center">

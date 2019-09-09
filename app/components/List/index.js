@@ -4,7 +4,7 @@ import { Button, Switch, ButtonGroup, Breakpoints, Menu, MenuItem } from 'react-
 import API from "../utils/API";
 import Status from "../Status";
 
-import './style.css'
+require('./style.css')
 
 const assessments = [
     { extinguisher: false },
@@ -149,26 +149,26 @@ class List extends Component {
                         <h3>LEVEL {this.props.level}</h3>
                         {/* Use horizontal list buttons  */}
                         {/* conditional rendering for buttons */}
+
                         <div className="switch-basics-example button-group-stack-example menu align-center expanded text-center" >
-                            <ButtonGroup className="menu expanded" stackFor={Breakpoints.SMALL}>
+                            <ButtonGroup className="menu expanded spacing" stackFor={Breakpoints.SMALL}>
                                 {assessments.map((item) => {
                                     let propName = Object.keys(item)
                                     let propVal = Object.values(item)
                                     return (
-                                        <div className="spacing">
-                                            <Menu className="grid-basics-example vertical">
-                                                <MenuItem>
-                                                    <Switch
-                                                        onChange={this.handleSwitch}
-                                                        key={propName}
-                                                        input={{ name: propName, value: propVal }}
-                                                        active={{ text: 'Yes' }}
-                                                        inactive={{ text: 'No' }}
-                                                    />
-                                                </MenuItem>
-                                                <MenuItem>{propName}</MenuItem>
-                                            </Menu>
-                                        </div>)
+                                        <Menu className="grid-basics-example vertical">
+                                            <MenuItem>
+                                                <Switch
+                                                    onChange={this.handleSwitch}
+                                                    key={propName}
+                                                    input={{ name: propName, value: propVal }}
+                                                    active={{ text: 'Yes' }}
+                                                    inactive={{ text: 'No' }}
+                                                />
+                                            </MenuItem>
+                                            <MenuItem>{propName}</MenuItem>
+                                        </Menu>
+                                    )
                                 })}
                             </ButtonGroup>
                         </div>

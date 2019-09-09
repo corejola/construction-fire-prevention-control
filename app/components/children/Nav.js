@@ -1,3 +1,5 @@
+// this is a travelsecure component, but we can utilize this as the baseline route for our NAVBAR
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
