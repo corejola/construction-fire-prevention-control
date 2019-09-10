@@ -4,6 +4,7 @@ import List from '../List';
 import API from "../utils/API"
 // import Nav from "../children/Nav"
 import { Link } from 'react-router-dom';
+import './assessment.css';
 
 class Assessment extends Component {
     constructor(props) {
