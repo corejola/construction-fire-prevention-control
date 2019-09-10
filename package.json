@@ -4,7 +4,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack & nodemon ./server/bin/www",
+    "dev": "webpack --watch & nodemon ./server/bin/www",
     "start": "nodemon ./server/bin/www",
     "seed": "node scripts/seedDB.js",
     "build": "webpack"
