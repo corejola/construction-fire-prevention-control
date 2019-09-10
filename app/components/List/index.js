@@ -23,7 +23,6 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
-
             riskScore: 0,
             condition: ""
         };
@@ -144,8 +143,6 @@ class List extends Component {
 
                 <Grid className='display'>
 
-                    {/* use a button to that changes color upon onclick */}
-                    {/* use helper function to calculate the risk value (1-100) */}
                     <Cell small={12} large={12}>
                         <div className="fieldset">
                             <h3>LEVEL {this.props.level}</h3>
@@ -153,6 +150,7 @@ class List extends Component {
                             {/* Use horizontal list buttons  */}
                             {/* conditional rendering for buttons */}
                             <div className="switch-basics-example button-group-stack-example">
+                                {/* className="align-center expanded text-center" */}
                                 <ButtonGroup stackFor={Breakpoints.SMALL}>
                                     {assessments.map((item) => {
                                         let propName = Object.keys(item)

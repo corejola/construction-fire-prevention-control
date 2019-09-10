@@ -1,3 +1,5 @@
+// this is a travelsecure component, but we can utilize this as the baseline route for our NAVBAR
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -25,10 +27,10 @@ export default class Nav extends Component {
               </li>
 
               <li>
-                <a className="page-scroll nav-left-text" href="/userguide"><p>USER GUIDE</p></a>
+                <a className="page-scroll nav-left-text" href="/"><p>HOME</p></a>
               </li>
               <li>
-                <a className="page-scroll nav-left-text" href="/assessment"><p>ASSESSMENTS</p></a>
+                <a className="page-scroll nav-left-text" href="/userguide"><p>USER GUIDE</p></a>
               </li>
               {localStorage.getItem('authenticated') ? (
                 <li>
@@ -48,21 +50,27 @@ export default class Nav extends Component {
               </li>
 
               <li>
-                <a className="page-scroll nav-right-text" href="/titlepage">
-                  <img className="navigation-icons" src={require("../../img/shapes/Profile.png")} />
-                  <p>PROFILE</p>
+                <a className="page-scroll nav-right-text" href="/assessment/results">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>TOWER 1</p>
                 </a>
               </li>
               <li>
-                <a className="page-scroll nav-right-text" href="/titlepage">
-                  <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
-                  <p>OFFLINE MODE</p>
+                <a className="page-scroll nav-right-text" href="/">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>TOWER 2 (TBD)</p>
                 </a>
               </li>
               <li>
-                <a className="page-scroll nav-right-text" href="/titlepage">
-                  <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
-                  <p>TITLEPAGE</p>
+                <a className="page-scroll nav-right-text" href="/">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>TOWER 3 (TBD)</p>
+                </a>
+              </li>
+              <li>
+                <a className="page-scroll nav-right-text" href="/">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>RETAIL PODIUM (TBD)</p>
                 </a>
               </li>
               {this.props.authenticated ? (
@@ -73,12 +81,7 @@ export default class Nav extends Component {
                   </a>
                 </li>
               ) : ""}
-              <li>
-                <a className="page-scroll nav-right-text" data-toggle="modal" data-target="#login-modal">
-                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
-                  <p>ITINERARY</p>
-                </a>
-              </li>
+
             </ul>
           </div>
           <Link to={"/"} ><img className="icon-middle-nav-desktop" src={require("../../../branding/Lendlease_Corporate_Logo_RGB.png")} /></Link>
