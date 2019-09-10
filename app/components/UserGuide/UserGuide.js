@@ -14,10 +14,11 @@ const UserGuide = (props) => {
                     <h3> How to use the app.</h3>
 
                     <ol>
-                        <h4><li>Select Tower to review</li></h4>
-                        <h4><li>Walk the level to observe the current field conditions as the relate to the presence of fire extinguishers, smoke/fire alarms, smoke/fire detetion, fire risers &#38; a clear path of egress </li></h4>
-                        <h4><li>Tag the item on the level you are on and click submit</li></h4>
-                        <h4><li>The app will determine the current fire risk condition for that level </li></h4>
+                        <h5><li>Select Tower to review (Only T1 is available for Demo).</li></h5>
+                        <h5><li>Walk a level to observe the current field conditions as they relate to the presence of fire extinguishers, smoke/fire alarms, smoke/fire detetion, fire risers &#38; a clear path of egress.</li></h5>
+                        <h5><li>Tag the item/items on the level you observe and click submit.</li></h5>
+                        <h5><li>The app will determine the current fire risk condition for that level.</li></h5>
+                        <h5><li>To review the results for the entire tower, head over to the "Current Fire Risk Assessment" page.</li></h5>
                     </ol>
 
                 </div>

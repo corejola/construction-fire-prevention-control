@@ -149,21 +149,21 @@ class List extends Component {
 
                             {/* Use horizontal list buttons  */}
                             {/* conditional rendering for buttons */}
-                            <div className="switch-basics-example button-group-stack-example align-center expanded text-center">
+                            <div className="switch-basics-example button-group-stack-example">
+                                {/* className="align-center expanded text-center" */}
                                 <ButtonGroup stackFor={Breakpoints.SMALL}>
                                     {assessments.map((item) => {
                                         let propName = Object.keys(item)
                                         let propVal = Object.values(item)
                                         return (
                                             <div className="grid-basics-example vertical">
-
                                                 <Switch
                                                     onChange={this.handleSwitch}
                                                     key={propName}
                                                     input={{ name: propName, value: propVal }}
                                                     active={{ text: 'Yes' }}
                                                     inactive={{ text: 'No' }}
-                                                // size="large"
+                                                    size="large"
                                                 />
                                                 {/* user property name */}
                                                 <p>{propName}</p>

@@ -2,6 +2,9 @@
     margin: 10px;
   }
 
+  p {
+    text-align: left
+  }
   .brandName {
     margin-bottom: 15px;
   }

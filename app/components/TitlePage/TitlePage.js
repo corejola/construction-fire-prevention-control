@@ -16,10 +16,10 @@ const TitlePage = props => {
                     <h1> Construction Fire: Prevention &#38; Control</h1>
                     <hr />
                     <h3>PROBLEM :</h3>
-                    <h5>Proactive fire prevention – to help teams assess fire risk for the lifecycle of a project.</h5>
+                    <p>Proactive fire prevention – to help teams assess fire risk for the lifecycle of a project.</p>
 
                     <h3>IDEA:</h3>
-                    <h5>Create catalogue/data set of various risks associated with all activities (high and low risk); construction schedule that will be a baseline to feed into a digital application. This will be part of an AI/ML pursuit in that the data will feed into a selected app and which will create a smart dashboard and provide insights to the project teams.</h5>
+                    <p>Create catalogue/data set of various risks associated with all activities (high and low risk); construction schedule that will be a baseline to feed into a digital application. This will be part of an AI/ML pursuit in that the data will feed into a selected app and which will create a smart dashboard and provide insights to the project teams. The idea is to shift the field focus from reactionary measures to more preventative controls. This concept makes our project teams smarter, more efficient and more proactive on identifying risks throughout the duration and flags potential blind spots.</p>
                 </div>
             </div>
             <div className="container">
