@@ -6,9 +6,9 @@ const authCheck = require("../config/middleware/authCheck");
 
 // router.get('/', authCheck);
 
-router.get('/results', authCheck);
+// router.get('/results', authCheck);
 
-// router.get('/results');
+router.get('/results');
 
 
 module.exports = router;

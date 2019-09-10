@@ -1,0 +1,11 @@
+.grid-basics-example {
+    width: 20%;
+}
+
+.switch, P {
+    text-align: center;
+}
+
+.fieldset {
+    padding: 5px 5px !important;
+}
