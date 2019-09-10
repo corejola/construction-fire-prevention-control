@@ -9,12 +9,17 @@
  .risk {
    margin-bottom: 50px;
  }
+ 
  .titlepage {
   padding: 15px;
-  background-color: #4BA0A5;
+  background-color: #00AACD;
   color: white;
   font-weight: bold;
   border-radius: 6px;
   font-size: 20px;
+}
+
+.text {
+  text-align: left
 }
 
