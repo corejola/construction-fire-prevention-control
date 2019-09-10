@@ -156,14 +156,14 @@ class List extends Component {
                                         let propName = Object.keys(item)
                                         let propVal = Object.values(item)
                                         return (
-                                            <div className="grid-basics-example vertical">
+                                            <div className="grid-basics-example">
                                                 <Switch
                                                     onChange={this.handleSwitch}
                                                     key={propName}
                                                     input={{ name: propName, value: propVal }}
                                                     active={{ text: 'Yes' }}
                                                     inactive={{ text: 'No' }}
-                                                    size="large"
+                                                // size="large"
                                                 />
                                                 {/* user property name */}
                                                 <p>{propName}</p>

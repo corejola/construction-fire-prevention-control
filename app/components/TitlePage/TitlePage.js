@@ -15,22 +15,17 @@ const TitlePage = props => {
                 <div className="p-2 paragraph">
                     <h1> Construction Fire: Prevention &#38; Control</h1>
                     <hr />
-                    <h3>PROBLEM :</h3>
-                    <p>Proactive fire prevention – to help teams assess fire risk for the lifecycle of a project.</p>
+                    {/* <h4>PROBLEM :</h4>
+                    <p className="text"> There is a significant risk of fire during the construction phases of interior finishes, prior to building commissioning. 
+                        
+                        Proactive fire prevention application to help construction management teams assess the rist of construction fires during the lifecycle of a project.</p>
 
-                    <h3>IDEA:</h3>
-                    <p>Create catalogue/data set of various risks associated with all activities (high and low risk); construction schedule that will be a baseline to feed into a digital application. This will be part of an AI/ML pursuit in that the data will feed into a selected app and which will create a smart dashboard and provide insights to the project teams. The idea is to shift the field focus from reactionary measures to more preventative controls. This concept makes our project teams smarter, more efficient and more proactive on identifying risks throughout the duration and flags potential blind spots.</p>
+                    <h4>IDEA:</h4>
+                    <p className="text">Create catalogue/data set of various risks associated with all activities (high and low risk); construction schedule that will be a baseline to feed into a digital application. This will be part of an AI/ML pursuit in that the data will feed into a selected app and which will create a smart dashboard and provide insights to the project teams. The idea is to shift the field focus from reactionary measures to more preventative controls. This concept makes our project teams smarter, more efficient and more proactive on identifying risks throughout the duration and flags potential blind spots.</p>
+                    <hr /> */}
                 </div>
             </div>
             <div className="container">
-                {/* <div className="d-flex flex-lg-row justify-content-center">
-                    <img className="p-2 logo" src={require("../../../branding/Lendlease_Corporate_BrandName_RGB.png")} />
-                </div>
-                <div className="d-flex flex-lg-row justify-content-center">
-                    <div className="p-2 paragraph">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                </div> */}
 
                 <div className="d-flex flex-sm-row justify-content-center">
                     <div className="p-2">
