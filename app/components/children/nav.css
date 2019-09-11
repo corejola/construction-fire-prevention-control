@@ -59,6 +59,7 @@
 
 .navbar-custom a {
   color: #ffffff;
+  cursor: pointer;
 }
 
 .navbar-custom .nav li {

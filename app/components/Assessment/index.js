@@ -38,7 +38,12 @@ class Assessment extends Component {
         return (
             <div className="container">
 
-                <Nav />
+                <Nav
+                    // {...props}
+                    authenticate={this.props.authenticate}
+                    deAuthenticate={this.props.deAuthenticate}
+                    authenticated={this.props.authenticated}
+                    logout={this.props.logout} />
                 {/* add a navbar */}
                 {/* <div className="link">
                     <Link to="/" className="button">HOME</Link>

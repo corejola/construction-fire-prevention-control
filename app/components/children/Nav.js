@@ -32,7 +32,13 @@ export default class Nav extends Component {
               <li>
                 <a className="page-scroll nav-left-text" href="/userguide"><p>USER GUIDE</p></a>
               </li>
-              {localStorage.getItem('authenticated') ? (
+              <li>
+                <a className="page-scroll nav-left-text" href="/assessment/results"><p>RESULTS</p></a>
+              </li>
+              <li>
+                <a href="#" onClick={this.props.logout} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGOUT</p></div></a>
+              </li>
+              {/* {localStorage.getItem('authenticated') ? (
                 <li>
                   <a href="#" onClick={this.props.logout} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGOUT</p></div></a>
                 </li>
@@ -40,7 +46,7 @@ export default class Nav extends Component {
                   <li>
                     <Link to={"/login"} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGIN</p></div></Link>
                   </li>
-                )}
+                )} */}
             </ul>
           </div>
           <div className="collapse navbar-collapse navbar-right navbar-main-collapse1">
@@ -50,7 +56,7 @@ export default class Nav extends Component {
               </li>
 
               <li>
-                <a className="page-scroll nav-right-text" href="/assessment/results">
+                <a className="page-scroll nav-right-text" href="/assessment">
                   <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
                   <p>TOWER 1</p>
                 </a>
@@ -73,14 +79,14 @@ export default class Nav extends Component {
                   <p>RETAIL PODIUM (TBD)</p>
                 </a>
               </li>
-              {this.props.authenticated ? (
+              {/* {this.props.authenticated ? (
                 <li>
                   <a className="page-scroll nav-right-text" href="/users/sign-out" data-toggle="modal">
                     <img className="navigation-icons" src={require("../../img/shapes/search.png")} />
                     <p>SEARCH LOCATION</p>
                   </a>
                 </li>
-              ) : ""}
+              ) : ""} */}
 
             </ul>
           </div>
