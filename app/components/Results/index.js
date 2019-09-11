@@ -1,9 +1,10 @@
 import React from "react";
 import * as d3 from "d3";
-import "./style.css"
+import "./style.css";
 // import database from "../../data/database.json";
-import API from "../utils/API"
-import { Button } from 'react-foundation'
+import API from "../utils/API";
+import Nav from '../children/Nav';
+import { Button } from 'react-foundation';
 
 // //---------- BAR CHART VARIABLES ----------//
 const bw = 400;
@@ -252,7 +253,9 @@ class Results extends React.Component {
 
         if (this.state.display) {
             return (
-                <div>
+
+                <div className="container">
+                    <Nav />
                     <div style={styles.holder}>
                         <h1>Tower Readiness Results</h1>
 
@@ -286,7 +289,8 @@ class Results extends React.Component {
         }
         else {
             return (
-                <div>
+                <div className="container">
+                    <Nav />
                     <div style={styles.holder}>
                         <h1>Tower Readiness Results</h1>
 

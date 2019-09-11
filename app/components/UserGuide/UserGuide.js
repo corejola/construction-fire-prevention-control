@@ -1,15 +1,16 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './UserGuide.css'
+import './UserGuide.css';
+import Nav from "../children/Nav"
 
 const UserGuide = props => {
     return (
         <div className="container">
-            <div className="d-flex flex-sm-row justify-content-center">
+            {/* <div className="d-flex flex-sm-row justify-content-center">
                 <img className="p-2 brandName" src={require("../../../branding/Lendlease_Corporate_BrandName_RGB.png")} />
-            </div>
-
+            </div> */}
+            <Nav />
             <div className="d-flex flex-sm-row justify-content-center">
                 <div className="p-2 paragraph">
                     <h2>Construction Fire: Prevention &#38; Control</h2>
@@ -41,11 +42,11 @@ const UserGuide = props => {
             {/* <div className="d-flex flex-lg-row justify-content-center">
                 <img className="p-2 risk" src={require("../../../branding/FireRiskMatrix.jpg")} />
             </div> */}
-            <div className="d-flex flex-lg-row justify-content-center">
+            {/* <div className="d-flex flex-lg-row justify-content-center">
                 <div className="p-2">
                     <Link to="/" className="titlepage">Home</Link>
                 </div>
-            </div>
+            </div> */}
         </div >
     )
 }

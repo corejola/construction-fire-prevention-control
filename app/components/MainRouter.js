@@ -95,7 +95,14 @@ export default class MainRouter extends Component {
           /> */}
           <Route strict exact path="/userguide" component={UserGuide} />
           <Route strict exact path="/weather" component={Weather} />
-          <Route strict exact path="/assessment" component={Assessment} />
+          <Route strict exact path="/assessment" render={props =>
+            <Assessment
+              {...props}
+              authenticate={this.authenticate}
+              deAuthenticate={this.deAuthenticate}
+              authenticated={this.state.authenticated}
+              logout={this.logout}
+            />} />
           <Route strict exact path="/assessment/results" component={Results} />
         </Switch>
       </Router>
