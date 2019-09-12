@@ -26,9 +26,9 @@ export default class Nav extends Component {
                 <a href="#page-top"></a>
               </li>
 
-              <li>
+              {/* <li>
                 <a className="page-scroll nav-left-text" href="/"><p>HOME</p></a>
-              </li>
+              </li> */}
               <li>
                 <a className="page-scroll nav-left-text" href="/userguide"><p>USER GUIDE</p></a>
               </li>
@@ -73,12 +73,12 @@ export default class Nav extends Component {
                   <p>TOWER 3 (TBD)</p>
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a className="page-scroll nav-right-text" href="/">
                   <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
                   <p>RETAIL PODIUM (TBD)</p>
                 </a>
-              </li>
+              </li> */}
               {/* {this.props.authenticated ? (
                 <li>
                   <a className="page-scroll nav-right-text" href="/users/sign-out" data-toggle="modal">
