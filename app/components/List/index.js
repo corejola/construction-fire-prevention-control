@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // CSS for horizontal list
-import { Button, Switch, ButtonGroup, Breakpoints, Row, Column } from 'react-foundation';
+import { Button, Switch, ButtonGroup, Breakpoints, Row, Column, Grid, Cell } from 'react-foundation';
 import API from "../utils/API";
 import Status from "../Status";
 
-// import './list.css'
+import './list.css'
 
 const assessments = [
     { extinguisher: false },
@@ -23,7 +23,6 @@ class List extends Component {
             detection: false,
             riser: false,
             egress: false,
-
             riskScore: 0,
             condition: ""
         };
@@ -128,7 +127,6 @@ class List extends Component {
 
                     })
                     .then(res => {
-                        // console.log(res)
                         this.setState({ condition: this.state.condition })
                     })
                     .catch(err => console.log(err))
@@ -143,44 +141,45 @@ class List extends Component {
 
             return (
 
-                <div className="container">
-                    {/* use a button to that changes color upon onclick */}
-                    {/* use helper function to calculate the risk value (1-100) */}
-                    <div className="fieldset">
-                        <h3>LEVEL {this.props.level}</h3>
+                <Grid className='display'>
 
-                        {/* Use horizontal list buttons  */}
-                        {/* conditional rendering for buttons */}
+                    <Cell small={12} large={12}>
+                        <div className="fieldset">
+                            <h3>LEVEL {this.props.level}</h3>
 
-                        <div className="switch-basics-example button-group-stack-example">
-                            <ButtonGroup stackFor={Breakpoints.SMALL}>
-                                {assessments.map((item) => {
-                                    let propName = Object.keys(item)
-                                    let propVal = Object.values(item)
-                                    return (
-                                        <div className="grid-basics-example">
-                                            <Switch
-                                                onChange={this.handleSwitch}
-                                                key={propName}
-                                                input={{ name: propName, value: propVal }}
-                                                active={{ text: 'Yes' }}
-                                                inactive={{ text: 'No' }}
-                                            />
-                                            {/* user property name */}
-                                            <p>{propName}</p>
-                                        </div>)
-                                })}
-                            </ButtonGroup>
+                            {/* Use horizontal list buttons  */}
+                            {/* conditional rendering for buttons */}
+                            <div className="switch-basics-example button-group-stack-example">
+                                {/* className="align-center expanded text-center" */}
+                                <ButtonGroup stackFor={Breakpoints.SMALL}>
+                                    {assessments.map((item) => {
+                                        let propName = Object.keys(item)
+                                        let propVal = Object.values(item)
+                                        return (
+                                            <div className="grid-basics-example">
+                                                <Switch
+                                                    onChange={this.handleSwitch}
+                                                    key={propName}
+                                                    input={{ name: propName, value: propVal }}
+                                                    active={{ text: 'Yes' }}
+                                                    inactive={{ text: 'No' }}
+                                                // size="large"
+                                                />
+                                                {/* user property name */}
+                                                <p>{propName}</p>
+                                            </div>)
+                                    })}
+                                </ButtonGroup>
+                            </div>
+
+                            <div className="button-small expanded">
+                                <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment} className="submit">Submit Survey</Button>
+                            </div>
+
                         </div>
+                    </Cell>
 
-                        <div className="button-small expanded">
-                            <Button isExpanded data-levelid={this.props.levelId} onClick={this.submitAssessment} className="submit">Submit Survey</Button>
-                        </div>
-
-                    </div>
-
-                </div >
-
+                </Grid>
 
             )
         } else if (condition === "normal" || condition === "caution" || condition === "critical") {

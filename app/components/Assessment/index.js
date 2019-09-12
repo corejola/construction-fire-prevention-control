@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import Nav from '../children/Nav';
 import List from '../List';
 // import TowerLevels from './TowerLevels.json';
 import API from "../utils/API"
+// import Nav from "../children/Nav"
 import { Link } from 'react-router-dom';
+import './assessment.css';
 
 class Assessment extends Component {
     constructor(props) {
@@ -33,12 +36,19 @@ class Assessment extends Component {
     render() {
         const { tower, levels } = this.state
         return (
-            
             <div className="container">
-                <div className="link">
+
+                <Nav
+                    // {...props}
+                    authenticate={this.props.authenticate}
+                    deAuthenticate={this.props.deAuthenticate}
+                    authenticated={this.props.authenticated}
+                    logout={this.props.logout} />
+                {/* add a navbar */}
+                {/* <div className="link">
                     <Link to="/" className="button">HOME</Link>
-                </div>
-                {/* .map over fake data */}
+                </div> */}
+
                 {/* Use list  */}
                 <h2 className="tower">{tower} Risk Assessment</h2>
                 {levels.map(item => {

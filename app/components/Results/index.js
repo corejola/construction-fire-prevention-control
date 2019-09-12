@@ -1,9 +1,10 @@
 import React from "react";
 import * as d3 from "d3";
-import "./style.css"
+import "./style.css";
 // import database from "../../data/database.json";
-import API from "../utils/API"
-import { Button } from 'react-foundation'
+import API from "../utils/API";
+import Nav from '../children/Nav';
+import { Button } from 'react-foundation';
 
 // //---------- BAR CHART VARIABLES ----------//
 const bw = 400;
@@ -98,28 +99,29 @@ class Results extends React.Component {
                 console.log(res.data);
 
                 for (var floor in res.data) {
-                    this.setState({ levels: [...this.state.levels, res.data[floor].levelNumber] })
-                };
+                    this.setState({ levels: [...this.state.levels, res.data[floor].levelNumber] });
 
-
-                // //---------- CONVERT DATASET ----------//
-
-                for (var score in res.data) {
-
-                    const assessments = res.data[score].riskAssessments.flat()
+                    const assessments = res.data[floor].riskAssessments.flat();
 
                     const mostRecentDate = new Date(Math.max.apply(null, assessments.map(e => {
                         return new Date(e.assessmentDate);
                     })));
 
                     const mostRecentObj = assessments.filter(e => {
-                        var d = new Date(e.assessmentDate);
+                        const d = new Date(e.assessmentDate);
                         return d.getTime() === mostRecentDate.getTime();
                     })[0];
 
-                    const currentAssessment = mostRecentObj.riskAssessmentResult
+                    const currentAssessment = "";
 
-                    this.setState({ dataset: [...this.state.dataset, currentAssessment] })
+                    if (mostRecentObj) {
+                        currentAssessment = mostRecentObj.riskAssessmentResult;
+                    }
+                    else {
+                        currentAssessment = "na";
+                    };
+
+                    this.setState({ dataset: [...this.state.dataset, currentAssessment] });
 
                 };
 
@@ -136,10 +138,9 @@ class Results extends React.Component {
                     else if (this.state.dataset[i] === "normal") {
                         this.state.green++
                     }
+                };
 
-                }
-
-                this.setState({ data: [...this.state.data, ...[this.state.red, this.state.yellow, this.state.green]] })
+                this.setState({ data: [...this.state.data, ...[this.state.red, this.state.yellow, this.state.green]] });
 
                 console.log(this.state.data);
 
@@ -185,7 +186,7 @@ class Results extends React.Component {
                             .attr("stroke", "none");
                     })
                     .append("svg:title")
-                    .text((d, i) => ("Floor score " + d))
+                    .text((d, i) => ("Floor score: " + d))
 
 
                 svg.selectAll("text")
@@ -268,7 +269,8 @@ class Results extends React.Component {
 
         if (this.state.display) {
             return (
-                <div>
+                <div className="container">
+                    <Nav />
                     <div style={styles.bar}></div>
 
                     <h3 style={styles.title}> I.Tower Readiness Results</h3>
@@ -312,10 +314,12 @@ class Results extends React.Component {
         }
         else {
             return (
-                <div>
+                <div className="container">
+                    <Nav />
                     <div style={styles.bar}></div>
                     <h3 style={styles.title}> I.Tower Readiness Results</h3>
                     <hr />
+
 
                     <div style={styles.holder}>
 

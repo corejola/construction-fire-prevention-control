@@ -1,3 +1,5 @@
+// this is a travelsecure component, but we can utilize this as the baseline route for our NAVBAR
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +17,7 @@ export default class Nav extends Component {
             <button type="button" className="navbar-toggle navbar-toggle-right" data-toggle="collapse" data-target=".navbar-main-collapse1">
               <i className="glyphicon glyphicon-plus"></i>
             </button>
-            <Link to={"/"} ><img className="icon-middle-nav-mobile" src={require("../../img/shapes/shape.png")} /></Link>
+            <Link to={"/"} ><img className="icon-middle-nav-mobile" src={require("../../../branding/Lendlease_Corporate_Logo_RGB.png")} /></Link>
           </div>
 
           <div className="collapse navbar-collapse navbar-left navbar-main-collapse">
@@ -24,13 +26,19 @@ export default class Nav extends Component {
                 <a href="#page-top"></a>
               </li>
 
+              {/* <li>
+                <a className="page-scroll nav-left-text" href="/"><p>HOME</p></a>
+              </li> */}
               <li>
                 <a className="page-scroll nav-left-text" href="/userguide"><p>USER GUIDE</p></a>
               </li>
               <li>
-                <a className="page-scroll nav-left-text" href="/assessment"><p>ASSESSMENTS</p></a>
+                <a className="page-scroll nav-left-text" href="/assessment/results"><p>RESULTS</p></a>
               </li>
-              {localStorage.getItem('authenticated') ? (
+              <li>
+                <a href="#" onClick={this.props.logout} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGOUT</p></div></a>
+              </li>
+              {/* {localStorage.getItem('authenticated') ? (
                 <li>
                   <a href="#" onClick={this.props.logout} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGOUT</p></div></a>
                 </li>
@@ -38,7 +46,7 @@ export default class Nav extends Component {
                   <li>
                     <Link to={"/login"} ><div className="page-scroll nav-left-text" data-toggle="modal"><p>LOGIN</p></div></Link>
                   </li>
-                )}
+                )} */}
             </ul>
           </div>
           <div className="collapse navbar-collapse navbar-right navbar-main-collapse1">
@@ -48,40 +56,41 @@ export default class Nav extends Component {
               </li>
 
               <li>
-                <a className="page-scroll nav-right-text" href="/titlepage">
-                  <img className="navigation-icons" src={require("../../img/shapes/Profile.png")} />
-                  <p>PROFILE</p>
+                <a className="page-scroll nav-right-text" href="/assessment">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>TOWER 1</p>
                 </a>
               </li>
               <li>
-                <a className="page-scroll nav-right-text" href="/titlepage">
-                  <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
-                  <p>OFFLINE MODE</p>
+                <a className="page-scroll nav-right-text" href="/">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>TOWER 2 (TBD)</p>
                 </a>
               </li>
               <li>
-                <a className="page-scroll nav-right-text" href="/titlepage">
-                  <img className="navigation-icons" src={require("../../img/shapes/offline.png")} />
-                  <p>TITLEPAGE</p>
+                <a className="page-scroll nav-right-text" href="/">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>TOWER 3 (TBD)</p>
                 </a>
               </li>
-              {this.props.authenticated ? (
+              {/* <li>
+                <a className="page-scroll nav-right-text" href="/">
+                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
+                  <p>RETAIL PODIUM (TBD)</p>
+                </a>
+              </li> */}
+              {/* {this.props.authenticated ? (
                 <li>
                   <a className="page-scroll nav-right-text" href="/users/sign-out" data-toggle="modal">
                     <img className="navigation-icons" src={require("../../img/shapes/search.png")} />
                     <p>SEARCH LOCATION</p>
                   </a>
                 </li>
-              ) : ""}
-              <li>
-                <a className="page-scroll nav-right-text" data-toggle="modal" data-target="#login-modal">
-                  <img className="navigation-icons" src={require("../../img/shapes/itinerary.png")} />
-                  <p>ITINERARY</p>
-                </a>
-              </li>
+              ) : ""} */}
+
             </ul>
           </div>
-          <Link to={"/"} ><img className="icon-middle-nav-desktop" src={require("../../img/shapes/shape.png")} /></Link>
+          <Link to={"/"} ><img className="icon-middle-nav-desktop" src={require("../../../branding/Lendlease_Corporate_Logo_RGB.png")} /></Link>
         </div>
       </nav>
     );

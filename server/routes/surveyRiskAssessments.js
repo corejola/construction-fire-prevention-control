@@ -10,7 +10,7 @@ router.get('/', authCheck);
 
 router.post('/new/:id', authCheck, assessment_api.postAssessment);
 
-router.get('/results', authCheck);
+// router.get('/results', authCheck);
 
 router.get('/results', authCheck, assessment_api.currentAssessment);
 
