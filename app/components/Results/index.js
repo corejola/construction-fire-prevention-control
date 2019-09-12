@@ -23,8 +23,9 @@ const styles = {
         "display": "flex",
         "flexDirection": "column",
         "alignItems": "center",
-        "justifyContent": "center",
-        "padding": "0 100px 0 100px"
+        "justifyContent": "left",
+        "textAlign": "left",
+        "padding": "0 50px 0 50px"
     },
     data: {
         "position": "absolute",
@@ -62,6 +63,9 @@ const styles = {
         "marginRight": "auto",
         "borderStyle": "inset",
         "borderWidth": "1px"
+    },
+    descriptions: {
+        "textAlign": "left",
     }
 };
 
@@ -70,7 +74,7 @@ const small = {
     "flexDirection": "column",
     "alignItems": "center",
     "justifyContent": "space-around",
-    "padding": "0 300px 0 300px"
+    "padding": "0 200px 0 200px"
 };
 
 
@@ -271,13 +275,12 @@ class Results extends React.Component {
             return (
                 <div className="container">
                     <Nav />
-                    <div style={styles.bar}></div>
 
                     <h3 style={styles.title}> I.Tower Readiness Results</h3>
                     <hr />
                     <div style={styles.holder}>
 
-                        <p className="description"><strong>ABOUT THE VISUALIZATIONS: </strong>The following visualization aggregates the tower's evaluation data. After evaluating the current state of each floor, calculations are conducted on the back-end to determine if a floor is in a good or normal safety status, <strong>green</strong>, a caution safety status, <strong>yellow</strong>,or a critical  status, <strong>red</strong>. Hover over each floor to see the final score. Notice if certain floors continue to evaluate to a severe safety rating. <br /> <br />              Reference the pie chart below to see the percentage of floors that are in each category: normal, caution, critical.</p>
+                        <p style={styles.descriptions} className="description"><strong>ABOUT THE VISUALIZATIONS: </strong>The following visualization aggregates the tower's evaluation data. After evaluating the current state of each floor, calculations are conducted on the back-end to determine if a floor is in a good or normal safety status, <strong>green</strong>, a caution safety status, <strong>yellow</strong>,or a critical  status, <strong>red</strong>. Hover over each floor to see the final score. Notice if certain floors continue to evaluate to a severe safety rating. <br /> <br />              Reference the pie chart below to see the percentage of floors that are in each category: normal, caution, critical.</p>
                         <Button onClick={this.handleClick}>More Details</Button>
                     </div >
 
@@ -306,7 +309,7 @@ class Results extends React.Component {
                     <hr />
                     <div style={styles.holder}>
 
-                        <p className="description">Each floor has a corresponding safety survey that results in a health rating: normal, caution or in a critical condition. Each floor depicted in the tower is a bar chart that calculates the aggregate rating for each floor, given the ratings that it received that day. The pie chart calculates how each category contributes to the tower status as a whole. Click on the more details button to view how many floors are tagged to be in critical condition and may need attention to resume to a normal safety status.     </p>
+                        <p style={styles.descriptions} className="description">Each floor has a corresponding safety survey that results in a health rating: normal, caution or in a critical condition. Each floor depicted in the tower is a bar chart that calculates the aggregate rating for each floor, given the ratings that it received that day. The pie chart calculates how each category contributes to the tower status as a whole. Click on the more details button to view how many floors are tagged to be in critical condition and may need attention to resume to a normal safety status.     </p>
                     </div >
                     <div style={styles.bar}></div>
                 </div >
@@ -316,14 +319,13 @@ class Results extends React.Component {
             return (
                 <div className="container">
                     <Nav />
-                    <div style={styles.bar}></div>
                     <h3 style={styles.title}> I.Tower Readiness Results</h3>
                     <hr />
 
 
                     <div style={styles.holder}>
 
-                        <p className="description"><strong>FLOORS IN CRITICAL CONDITION:</strong>{`  ${this.state.red}`}
+                        <p style={styles.descriptions} className="description"><strong>FLOORS IN CRITICAL CONDITION:</strong>{`  ${this.state.red}`}
                             <br /> <br />
                             Contact area superintendent for support.
                         </p>
@@ -356,8 +358,9 @@ class Results extends React.Component {
                     <hr />
                     <div style={styles.holder}>
 
-                        <p className="description">Each floor has a corresponding safety survey that results in a health rating: normal, caution or in a critical condition. Each floor depicted in the tower is a bar chart that calculates the aggregate rating for each floor, given the ratings that it received that day. The pie chart calculates how each category contributes to the tower status as a whole. Click on the more details button to view how many floors are tagged to be in critical condition and may need attention to resume to a normal safety status.     </p>
-                    </div >
+                        <p style={styles.descriptions} className="description">Each floor has a corresponding safety survey that results in a health rating: normal, caution or critical. Each floor depicted in the tower is a bar chart that calculates the aggregate rating for each floor, given the ratings that it received that day. The pie chart calculates how each category contributes to the tower status as a whole. Click on the more details button to view how many floors are tagged to be in critical condition and may need attention to resume to a normal safety status.</p>
+                    </div>
+
                     <div style={styles.bar}></div>
 
                 </div >
