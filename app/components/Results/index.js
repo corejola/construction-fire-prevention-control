@@ -17,7 +17,7 @@ const radius = Math.min(pw, ph) / 2 - margin;
 const styles = {
     title: {
         "textAlign": "left",
-        "padding": "15px 0 0 100px"
+        "padding": "15px 0 0 65px"
     },
     holder: {
         "display": "flex",
@@ -29,7 +29,7 @@ const styles = {
     },
     data: {
         "position": "absolute",
-        "right": "80px",
+        "right": "100px",
         "zIndex": "1",
         "margin": "1px",
         "borderColor": "gray",
@@ -49,6 +49,13 @@ const styles = {
         "justifyContent": "space-around",
         "padding": "0 200px 0 200px"
     },
+    headers: {
+        "display": "flex",
+        "flexDirection": "row",
+        "alignItems": "center",
+        "justifyContent": "space-between",
+        "padding": "0 200px 0 200px"
+    },
     bar: {
         "backgroundColor": "black",
         "height": "30px",
@@ -66,6 +73,12 @@ const styles = {
     },
     descriptions: {
         "textAlign": "left",
+    },
+    smallHeaders: {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "justifyContent": "space-between",
     }
 };
 
@@ -73,7 +86,7 @@ const small = {
     "display": "flex",
     "flexDirection": "column",
     "alignItems": "center",
-    "justifyContent": "space-around",
+    "justifyContent": "space-between",
     "padding": "0 200px 0 200px"
 };
 
@@ -285,7 +298,7 @@ class Results extends React.Component {
                     </div >
 
 
-                    <div className="vis-holder" style={this.state.width < 1000 ? small : styles.visHolder}>
+                    <div className="vis-holder" style={this.state.width < 1000 ? styles.smallHeaders : styles.headers}>
 
                         <h4>TOWER 1 RESULTS</h4>
                         <h4>PERCENTAGE OF RESULTS</h4>
@@ -333,7 +346,7 @@ class Results extends React.Component {
 
                     </div >
 
-                    <div className="vis-holder" style={this.state.width < 1000 ? small : styles.visHolder}>
+                    <div className="vis-holder" style={this.state.width < 1000 ? styles.smallHeaders : styles.headers}>
                         <h4>TOWER 1 RESULTS</h4>
                         <h4>PERCENTAGE OF RESULTS</h4>
                     </div>
