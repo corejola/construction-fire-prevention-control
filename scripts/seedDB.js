@@ -19,6 +19,11 @@ const userSeed = [
         username: "blahman",
         email: "blah@blah.com",
         password: "Password123!"
+    },
+    {
+        username: "testProfile",
+        email: "test@test.com",
+        password: "Testing!1"
     }
 ];
 
@@ -48,7 +53,7 @@ db.User
                     emergencyEgress: true,
                     riskAssessmentResult: "normal",
                     assessementDate: new Date(Date.now()),
-                    user: users[1]._id
+                    user: users[2]._id
                 }
             ];
 
