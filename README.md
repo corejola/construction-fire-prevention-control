@@ -12,9 +12,7 @@ Demo Profile
 Proactive Fire Prevent &amp; Control tool to help teams accurately assess fire related risks during the life cycle of a project. 
 
 ## Idea: 
-Create catalogue/data set of various risks associated with all activities (high and low risk); construction schedule that will be a baseline to feed into a digital application. This will be part of an AI/ML pursuit in that the data will feed into a selected app and which will create a smart dashboard and provide insights to the project teams. 
-
-The idea is to shift the field focus from reactionary measures to more preventative controsl. This concept makes our project teams smarter, more efficient and more proactive on identifying risks throughout the duration and flags potential blind spots. 
+Create catalogue/data set of various risks associated with all activities (high and low risk) 
 
 ## Outline/Phase 1:
 Proposal  - mobile application to help field team accurately assess fire related risks during the lifestyle of a project, during the finishes phase of construction and prior to commissioning. Application to utilize MVC architecture and store data for future analysis of data trends
