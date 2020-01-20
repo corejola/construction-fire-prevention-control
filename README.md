@@ -1,5 +1,3 @@
-![Lendlease](branding/Lendlease_Corporate_BrandName_RGB.png)
-
 # Construction Fire Prevention Control
 MVP Phase 01 deployed application [LINK](https://sleepy-eyrie-44318.herokuapp.com/)
 
